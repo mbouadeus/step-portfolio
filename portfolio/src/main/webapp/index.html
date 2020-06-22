@@ -3,16 +3,48 @@
   <head>
     <meta charset="UTF-8">
     <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
+  <body class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white my-5">
+        <ul id="navbar" class="nav nav-pills mx-auto">
+            <li class="nav-item px-1"><a class="nav-link px-5 active" href="index.html">Home</a></li>
+            <li class="nav-item px-1"><a class="nav-link px-5" href="about.html">About</a></li>
+            <li class="nav-item px-1"><a class="nav-link px-5" href="portfolio.html">Portfolio</a></li>
+            <li class="nav-item px-1"><a class="nav-link px-5" href="blog.html">Blog</a></li>
+            <li class="nav-item px-1"><button type="button" class="btn btn-outline-primary px-5">Contact</button></li>
+        </ul>
+    </nav>
+    
+    <main class="px-5 pt-5 my-5 text-center">
+        <h1 class="mb-5">Hello, my name is Steve Mbouadeu</h1>
+        <p class="lead">
+            I'm a Google STEP intern with a passion for software engineering. 
+            I enjoy using new technologies to develop innovative and exciting applications. 
+            Check out articles on web tools I'm learning and using in my Blog. 
+            Feel free to browse through my latest projects in my Portfolio.
+        </p>
+      <!-- <img src="images/profile-img.jpg" alt="profile image" />
       <p>Click here to get a random message:</p>
       <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+      <div id="greeting-container"></div> -->
+    </main>
+    <div class="row">
+        <div class="col-6 px-1 text-right">
+            <button type="button" class="btn btn-primary btn-lg ml-2">Browse Projects</button>
+        </div>
+        <div class="col-6 px-1">
+           <button type="button" class="btn btn-secondary btn-lg">Resume</button>
+        </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
