@@ -12,17 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+window.addEventListener('load', function () {
+    addRandomBackground();
+});
+
+
+/**
+ * Adds a random backgournd wallpaper to the page.
+ */
+function addRandomBackground() {
+ const wallpapers = ['https://www.toptal.com/designers/subtlepatterns/patterns/y-so-serious-white.png',
+    'https://www.toptal.com/designers/subtlepatterns/patterns/webb.png'];
+
+  // Pick a random wallpaper.
+  const wallpaper = wallpapers[Math.floor(Math.random() * wallpapers.length)];
+console.log(document.body);
+console.log(document.getElementsByTagName("body").length);
+console.log(document.getElementsByTagName("body").item(0));
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  const bodyElement = document.getElementsByTagName('body')[0];
+  bodyElement.style.background = `url("${wallpaper}")`;
+}
+
+function addBackground(id) {
+    const wallpapers = ['https://www.toptal.com/designers/subtlepatterns/patterns/y-so-serious-white.png',
+    'https://www.toptal.com/designers/subtlepatterns/patterns/webb.png'];
 }
