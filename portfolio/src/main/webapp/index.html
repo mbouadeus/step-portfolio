@@ -9,7 +9,7 @@
     <script src="script.js"></script>
   </head>
   <body class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white my-5"> <!-- navigation bar -->
+    <nav class="wrapper border navbar navbar-expand-lg navbar-light py-4 my-5"> <!-- navigation bar -->
         <ul id="navbar" class="nav nav-pills mx-auto">
             <li class="nav-item px-1"><a class="nav-link px-5 active" href="index.html">Home</a></li>
             <li class="nav-item px-1"><a class="nav-link px-5" href="about.html">About</a></li>
@@ -18,24 +18,26 @@
             <li class="nav-item px-1"><a role="button" class="btn btn-outline-primary px-5" href="contact.html">Contact</a></li>
         </ul>
     </nav>
-    
-    <main class="px-5 pt-5 my-5 text-center">
-        <h1 class="mb-5">Hello, my name is Steve Mbouadeu</h1> <!-- page heading -->
-        <p class="lead"> <!-- page main content -->
-            I'm a Google STEP intern with a passion for software engineering. 
-            I enjoy using new technologies to develop innovative and exciting applications. 
-            Check out articles on web tools I'm learning and using in my Blog. 
-            Feel free to browse through my latest projects in my Portfolio.
-        </p>
+    <main class="wrapper border py-5">
+        <div class="row px-5 mb-5 text-center">
+            <h1 class="mb-5 d-inline-block mx-auto">Hello, my name is Steve Mbouadeu</h1> <!-- page heading -->
+            <p class="lead"> <!-- page main content -->
+                I'm a Google STEP intern with a passion for software engineering. 
+                I enjoy using new technologies to develop innovative and exciting applications. 
+                Check out articles on web tools I'm learning and using in my Blog. 
+                Feel free to browse through my latest projects in my Portfolio.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-6 px-1 text-right"> <!-- button to portfolio page -->
+                <button type="button" class="btn btn-primary btn-lg ml-2">Browse Projects</button>
+            </div>
+            <div class="col-6 px-1"> <!-- button to resume -->
+            <button type="button" class="btn btn-secondary btn-lg">Resume</button>
+            </div>
+        </div>
     </main>
-    <div class="row">
-        <div class="col-6 px-1 text-right"> <!-- button to portfolio page -->
-            <button type="button" class="btn btn-primary btn-lg ml-2">Browse Projects</button>
-        </div>
-        <div class="col-6 px-1"> <!-- button to resume -->
-           <button type="button" class="btn btn-secondary btn-lg">Resume</button>
-        </div>
-    </div>
+    <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
@@ -43,4 +45,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
+  
 </html>
+
