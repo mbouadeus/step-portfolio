@@ -1,14 +1,8 @@
 /* General Styles */
 
-body {
-    /* background: url("https://www.toptal.com/designers/subtlepatterns/patterns/y-so-serious-white.png"); */
-    /* opacity: .4; */
-}
-
 .wrapper {
     border-radius: .4rem;
     background-color: white;
-    /* box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); */
 }
 
 .rounded-lg {
