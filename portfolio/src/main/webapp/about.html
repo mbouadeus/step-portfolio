@@ -5,6 +5,7 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
@@ -21,8 +22,8 @@
     <header class="wrapper card px-5 py-5 my-5">
         <div class="row">
             <div class="col-5 text-center align-middle">
-                <img id="about-profile-img" src="images/profile-img.jpg" alt="profile image"/>
-                <h4>Steve Mbouadeu</h4>
+                <img id="about-profile-img" src="images/profile-img.jpg" alt="profile image" class="mb-4 rounded-lg"/>
+                <h4 class="mb-0">Steve Mbouadeu</h4>
                 <p class="lead">Google STEP Intern</p>
             </div>
             <div class="col-7">
@@ -37,7 +38,7 @@
                     <div class="d-inline-block">
                         <div class="d-flex flex-column text-center">
                             <button type="button" class="btn btn-primary btn-lg">Resume</button>  <!-- button to resume -->
-                            <a class="" href="#" alt="download link">Download</a>  <!-- button to download resume -->
+                            <a class="btn-link" role="button" href="#" alt="download link"><i class="fas fa-arrow-down"></i>Download</a>  <!-- button to download resume -->
                         </div>
                     </div>
                     <button type="button" class="btn btn-outline-primary btn-lg">Linkedin</button>  <!-- button to linkedin profile -->
@@ -53,9 +54,9 @@
             </p>
   
         <!-- gallery images -->
-        <img src="images/placeholder.jpg" class="col-3 rounded" />
-        <img src="images/placeholder.jpg" class="col-3 rounded" />
-        <img src="images/placeholder.jpg" class="col-3 rounded" />
+        <div class="d-inline-block col-3"><img src="images/placeholder.jpg" class="rounded-lg w-100" /></div>
+        <div class="d-inline-block col-3"><img src="images/placeholder.jpg" class="rounded-lg w-100" /></div>
+        <div class="d-inline-block col-3"><img src="images/placeholder.jpg" class="rounded-lg w-100" /></div>
         
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
