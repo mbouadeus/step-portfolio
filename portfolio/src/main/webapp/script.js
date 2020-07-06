@@ -27,9 +27,6 @@ function addRandomBackground() {
 
   // Pick a random wallpaper.
   const wallpaper = wallpapers[Math.floor(Math.random() * wallpapers.length)];
-console.log(document.body);
-console.log(document.getElementsByTagName("body").length);
-console.log(document.getElementsByTagName("body").item(0));
 
   // Add it to the page.
   const bodyElement = document.getElementsByTagName('body')[0];
