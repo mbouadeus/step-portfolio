@@ -20,13 +20,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+    private ArrayList<String> messages;
+
+    public DataServlet() {
+        messages = new ArrayList<>(
+            Arrays.asList("Act as if what you do makes a difference.",
+            "Success is not final and failure is not fatal.",
+            "What you get is not as important as who you become.")  
+        );
+    }
+
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("If you can dream it, you can do it!");
+      Gson gson = new Gson();
+
+      String json = gson.toJson(messages);
+
+        response.setContentType("text/html;");
+        response.getWriter().println(json);
   }
 }

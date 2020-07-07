@@ -22,15 +22,27 @@
     <header class="wrapper card px-5 py-5 mb-5 text-center">
             <h1 class="">Servlet Test Page</h1> <!-- page heading -->  
     </header>
-    <main class="wrapper card px-5 py-5 mb-5 text-center">  <!-- portfolio servlet tests -->
-        <h1 class="mb-3">Get A Quote</h1>
-        <p class="lead">
-               Press the button bellow to get a quote.
-        </p>
-        <button type="button" class="btn btn-outline-primary mb-4" onClick="getQuote()">
-            Get Quote
-        </button>
-        <p id="quote-container" class="lead"></p>
+    <main>  <!-- portfolio servlet tests -->
+        <div class="wrapper card px-5 py-5 mb-5 text-center">
+            <h1 class="mb-3">Get A Quote</h1>
+            <p class="lead">
+                Press the button bellow to get a quote.
+            </p>
+            <button type="button" class="btn btn-outline-primary mb-4" onClick="getQuote()" disabled>
+                Get Quote
+            </button>
+            <p id="quote-container" class="lead"></p>
+        </div>
+        <div id="quotes-container" class="wrapper card px-5 py-5 mb-5 text-center">
+            <h1 class="mb-3">Get Inspirational Quotes</h1>
+            <p class="lead">
+                Press the button bellow to print inspirational quotes.
+            </p>
+            <button type="button" class="btn btn-outline-primary mb-4" onClick="printQuotes()">
+                Get Quotes
+            </button>
+            
+        </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
