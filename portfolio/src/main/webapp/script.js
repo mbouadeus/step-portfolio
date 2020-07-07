@@ -14,7 +14,7 @@
 
 
 window.addEventListener('load', function () {
-    addRandomBackground();
+  addRandomBackground();
 });
 
 
@@ -32,35 +32,35 @@ function addRandomBackground() {
  * Adds background wallpaper that corresponds with id.
  */
 function addBackground(id) {
-    const wallpapers = ['https://www.toptal.com/designers/subtlepatterns/patterns/y-so-serious-white.png',
-    'https://www.toptal.com/designers/subtlepatterns/patterns/webb.png'];
+  const wallpapers = ['https://www.toptal.com/designers/subtlepatterns/patterns/y-so-serious-white.png',
+  'https://www.toptal.com/designers/subtlepatterns/patterns/webb.png'];
 
-    // Pick wallpaper.
-    const wallpaper = wallpapers[id];
+  // Pick wallpaper.
+  const wallpaper = wallpapers[id];
 
-    // Add it to the page.
-    const bodyElement = document.getElementsByTagName('body')[0];
-    bodyElement.style.background = `url("${wallpaper}")`;
+  // Add it to the page.
+  const bodyElement = document.getElementsByTagName('body')[0];
+  bodyElement.style.background = `url("${wallpaper}")`;
 }
 
 /**
  * Returns the id of the background that has been selected.
  */
 function getSelectedBackgroundId() {
-    // Gets index of wallpaper selected from DOM.
-    const id = Array.from(document.querySelector('.modal-body > .list-group').childNodes)
+  // Gets index of wallpaper selected from DOM.
+  const id = Array.from(document.querySelector('.modal-body > .list-group').childNodes)
     .findIndex(listItem => listItem.classList && listItem.classList.contains('active'));
 
-    return Math.floor(id / 2);
+  return Math.floor(id / 2);
 }
 
 function setBackground() {
-    // Retrieves id of background option selected in menu.
-    const id = getSelectedBackgroundId();
+  // Retrieves id of background option selected in menu.
+  const id = getSelectedBackgroundId();
 
-    // Sets background
-    addBackground(id);
+  // Sets background
+  addBackground(id);
 
-    // Closes background selection menu.
-    $('#settingsModal').modal('hide');
+  // Closes background selection menu.
+  $('#settingsModal').modal('hide');
 }

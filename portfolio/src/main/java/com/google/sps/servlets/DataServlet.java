@@ -29,24 +29,24 @@ import java.util.Arrays;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-    private ArrayList<String> messages;
+  private ArrayList<String> messages;
 
-    public DataServlet() {
-        messages = new ArrayList<>(
-            Arrays.asList("Act as if what you do makes a difference.",
-            "Success is not final and failure is not fatal.",
-            "What you get is not as important as who you become.")  
-        );
-    }
+  public DataServlet() {
+    messages = new ArrayList<>(
+      Arrays.asList("Act as if what you do makes a difference.",
+      "Success is not final and failure is not fatal.",
+      "What you get is not as important as who you become.")  
+    );
+  }
 
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      Gson gson = new Gson();
+    Gson gson = new Gson();
 
-      String json = gson.toJson(messages);
+    String json = gson.toJson(messages);
 
-        response.setContentType("text/html;");
-        response.getWriter().println(json);
+    response.setContentType("text/html;");
+    response.getWriter().println(json);
   }
 }

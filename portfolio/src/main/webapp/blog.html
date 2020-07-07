@@ -4,85 +4,85 @@
     <meta charset="UTF-8">
     <title>Blog | My Portfolio</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body class="container">
-    <nav class="wrapper border navbar navbar-expand-lg navbar-light py-4 my-5"> <!-- navigation bar -->
-        <ul id="navbar" class="nav nav-pills mx-auto">
-            <li class="nav-item px-1"><a class="nav-link px-5" href="index.html">Home</a></li>
-            <li class="nav-item px-1"><a class="nav-link px-5" href="about.html">About</a></li>
-            <li class="nav-item px-1"><a class="nav-link px-5" href="portfolio.html">Portfolio</a></li>
-            <li class="nav-item px-1"><a class="nav-link px-5 active" href="blog.html">Blog</a></li>
-            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#settingsModal">
-                <i class="fas fa-cog d-inline align-middle"></i>
-            </button>
-        </ul>
+    <nav class="wrapper border navbar navbar-expand-lg navbar-light py-4 my-5">
+      <!-- navigation bar -->
+      <ul id="navbar" class="nav nav-pills mx-auto">
+        <li class="nav-item px-1"><a class="nav-link px-5" href="index.html">Home</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5" href="about.html">About</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5" href="portfolio.html">Portfolio</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5 active" href="blog.html">Blog</a></li>
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#settingsModal">
+        <i class="fas fa-cog d-inline align-middle"></i>
+        </button>
+      </ul>
     </nav>
     <header class="wrapper card px-5 py-5 mb-5 text-center">
-            <h1 class="mb-3">Daily Scoop</h1> <!-- page header -->
-            <p class="lead">
-                Follow me through my daily experiences and life journey.<br/>
-                Here are some of the methods I utilize to make <br/>
-                my life more enjoyable and fulfilling.
-                
-            </p>
-            <div class="mt-2"> <!-- blog article filters -->
-                <button type="button" class="btn btn-outline-primary btn-sm mb-2 active">Show All</button>
-                <button type="button" class="btn btn-outline-primary btn-sm mb-2">Books</button>
-                <button type="button" class="btn btn-outline-primary btn-sm mb-2">TV Shows</button>
-                <button type="button" class="btn btn-outline-primary btn-sm mb-2">Anime</button>
-                <button type="button" class="btn btn-outline-primary btn-sm mb-2">Manga</button><br/>
- 
-                <button type="button" class="btn btn-outline-primary btn-sm">Productivity</button>
-                <button type="button" class="btn btn-outline-primary btn-sm">Life Hacks</button>
-                <button type="button" class="btn btn-outline-primary btn-sm">Miscellanious</button>
-            </div>
-       
+      <h1 class="mb-3">Daily Scoop</h1>
+      <!-- page header -->
+      <p class="lead">
+        Follow me through my daily experiences and life journey.<br/>
+        Here are some of the methods I utilize to make <br/>
+        my life more enjoyable and fulfilling.
+      </p>
+      <div class="mt-2">
+        <!-- blog article filters -->
+        <button type="button" class="btn btn-outline-primary btn-sm mb-2 active">Show All</button>
+        <button type="button" class="btn btn-outline-primary btn-sm mb-2">Books</button>
+        <button type="button" class="btn btn-outline-primary btn-sm mb-2">TV Shows</button>
+        <button type="button" class="btn btn-outline-primary btn-sm mb-2">Anime</button>
+        <button type="button" class="btn btn-outline-primary btn-sm mb-2">Manga</button><br/>
+        <button type="button" class="btn btn-outline-primary btn-sm">Productivity</button>
+        <button type="button" class="btn btn-outline-primary btn-sm">Life Hacks</button>
+        <button type="button" class="btn btn-outline-primary btn-sm">Miscellanious</button>
+      </div>
     </header>
-    <main class="mb-5"> <!-- blog articles -->
-        <div class="port-card d-inline-block col-6 px-1">
-            <div class="card p-2 rounded">
-                <div class="ribbon">
-                    <div class="label font-weight-bold">NEW</div>
-                </div>
-                <img src="images/placeholder-2.png" alt="card placeholder" class="port-card-img"/>
-            </div>
+    <main class="mb-5">
+      <!-- blog articles -->
+      <div class="port-card d-inline-block col-6 px-1">
+        <div class="card p-2 rounded">
+          <div class="ribbon">
+            <div class="label font-weight-bold">NEW</div>
+          </div>
+          <img src="images/placeholder-2.png" alt="card placeholder" class="port-card-img"/>
         </div>
+      </div>
     </main>
     <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="settingsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="settingsModalLabel">Background</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="settingsModalLabel">Background</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="list-group" role="tablist">
+              <button class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" role="tab" aria-controls="home">
+              Y-so-serious
+              </button>
+              <button class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" role="tab" aria-controls="profile">
+              Triangular Maze
+              </button>
             </div>
-            <div class="modal-body">
-                 <div class="list-group" role="tablist">
-                    <button class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" role="tab" aria-controls="home">
-                        Y-so-serious
-                    </button>
-                    <button class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" role="tab" aria-controls="profile">
-                        Triangular Maze
-                    </button>
-                </div>
-            
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onClick="setBackground()">Save changes</button>
-            </div>
-            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onClick="setBackground()">Save changes</button>
+          </div>
         </div>
+      </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
