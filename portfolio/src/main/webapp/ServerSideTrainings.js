@@ -40,21 +40,21 @@ async function printQuotes() {
 }
 
  /**
- * Retreives comment from server.
+ * Retreives comments from server.
  */
 async function getCommentFromServer() {
    return await fetch('/data').then(response => response.json());
 }
 
  /**
- * Dynamically appends comment from server to DOM.
+ * Dynamically appends comments from server to DOM.
  */
-async function printComment() {
-  const commentJson = await getCommentFromServer();
+async function printComments() {
+  const commentsJson = await getCommentFromServer();
 
-  if (commentJson[0].length === 0) {
+  if (commentsJson[0].length === 0) {
 
-    // If comment has not been posted, print 'empty' message.
+    // If comments have not been posted, print 'empty' message.
     const msgElement = document.createElement('p');
     msgElement.classList.add('lead');
     msgElement.innerText = "empty";
@@ -62,23 +62,29 @@ async function printComment() {
 
   } else {
     
-    // If comment has been posted, print it.
-    const name = commentJson[0];
-    const comment = commentJson[1];
-
-    const nameElement = document.createElement('p');
-    nameElement.classList.add('lead');
-    nameElement.innerText = name;
-
-    const commentElement = document.createElement('p');
-    commentElement.innerText = comment;
-
+    // If comments have been posted, print it.
+    let name, nameElem, comment, commentElem, mediaClone;
     const commentContainer = document.getElementById('comment-container');
-    commentContainer.appendChild(nameElement);
-    commentContainer.appendChild(commentElement);
+    const mediaElem = document.getElementsByClassName('media-template')[0];
+
+    commentsJson.forEach(commentInfo => {
+      name = commentInfo[1];
+      comment = commentInfo[2];
+
+      mediaClone = mediaElem.cloneNode(true);
+      mediaClone.classList.remove('d-none');
+
+      nameElem = mediaClone.querySelector('h5');
+      nameElem.innerText = name;
+
+      commentElem = mediaClone.querySelector('.media-body');
+      commentElem.append(comment);
+
+      commentContainer.appendChild(mediaClone);
+    });
   }
 }
 
 window.addEventListener('load', async function () {
-  await printComment();
+  await printComments();
 });

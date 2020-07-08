@@ -22,6 +22,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -29,22 +37,37 @@ import java.util.Arrays;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private String name;
-  private String comment;
-
-  public DataServlet() {
-    name = "";
-    comment = "";
-  }
-
-
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Create datastore query
+    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
+
+    // Prepare database to be queried
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+    // Get query results
+    PreparedQuery results = datastore.prepare(query);
+
+    List<List<String>> comments = new ArrayList<>();
+
+    // Interate through entities in query results
+    for (Entity entity : results.asIterable()) {
+      long id = entity.getKey().getId();
+    
+      // Retrieve comment inputs from entity
+      String name = (String) entity.getProperty("name");
+      String comment = (String) entity.getProperty("comment");
+      long timestamp = (long) entity.getProperty("timestamp");
+
+      // Store comment
+      comments.add(Arrays.asList(Long.toString(timestamp), name, comment));
+    }
+    
     Gson gson = new Gson();
 
-    String json = gson.toJson(Arrays.asList(name, comment));
+    String json = gson.toJson(comments);
 
-    response.setContentType("text/html;");
+    response.setContentType("application/json;");
     response.getWriter().println(json);
   }
 
@@ -53,11 +76,20 @@ public class DataServlet extends HttpServlet {
     // Get the input from the form.
     String name = getParameter(request, "name", "");
     String comment = getParameter(request, "comment", "");
+    long timestamp = System.currentTimeMillis();
 
-    // Save inputs
-    this.name = name;
-    this.comment = comment;
+    // Create datastore entity
+    Entity commentEntity = new Entity("Comment");
+
+    // Save comment inputs to entity
+    commentEntity.setProperty("name", name);
+    commentEntity.setProperty("comment", comment);
+    commentEntity.setProperty("timestamp", timestamp);
     
+    // Enter entity into database
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
+
     // Respond reload page.
     response.sendRedirect("/ServerSideTrainings.html");
   }
