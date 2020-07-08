@@ -38,3 +38,47 @@ async function printQuotes() {
   // Disable quote button
   document.querySelector('#quotes-container > button').setAttribute('disabled', '');
 }
+
+ /**
+ * Retreives comment from server.
+ */
+async function getCommentFromServer() {
+   return await fetch('/data').then(response => response.json());
+}
+
+ /**
+ * Dynamically appends comment from server to DOM.
+ */
+async function printComment() {
+  const commentJson = await getCommentFromServer();
+
+  if (commentJson[0].length === 0) {
+
+    // If comment has not been posted, print 'empty' message.
+    const msgElement = document.createElement('p');
+    msgElement.classList.add('lead');
+    msgElement.innerText = "empty";
+    document.getElementById('comment-container').appendChild(msgElement);
+
+  } else {
+    
+    // If comment has been posted, print it.
+    const name = commentJson[0];
+    const comment = commentJson[1];
+
+    const nameElement = document.createElement('p');
+    nameElement.classList.add('lead');
+    nameElement.innerText = name;
+
+    const commentElement = document.createElement('p');
+    commentElement.innerText = comment;
+
+    const commentContainer = document.getElementById('comment-container');
+    commentContainer.appendChild(nameElement);
+    commentContainer.appendChild(commentElement);
+  }
+}
+
+window.addEventListener('load', async function () {
+  await printComment();
+});

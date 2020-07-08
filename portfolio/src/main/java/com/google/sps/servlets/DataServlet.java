@@ -29,14 +29,12 @@ import java.util.Arrays;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private ArrayList<String> messages;
+  private String name;
+  private String comment;
 
   public DataServlet() {
-    messages = new ArrayList<>(
-      Arrays.asList("Act as if what you do makes a difference.",
-      "Success is not final and failure is not fatal.",
-      "What you get is not as important as who you become.")  
-    );
+    name = "";
+    comment = "";
   }
 
 
@@ -44,9 +42,35 @@ public class DataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Gson gson = new Gson();
 
-    String json = gson.toJson(messages);
+    String json = gson.toJson(Arrays.asList(name, comment));
 
     response.setContentType("text/html;");
     response.getWriter().println(json);
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String name = getParameter(request, "name", "");
+    String comment = getParameter(request, "comment", "");
+
+    // Save inputs
+    this.name = name;
+    this.comment = comment;
+    
+    // Respond reload page.
+    response.sendRedirect("/ServerSideTrainings.html");
+  }
+
+  /**
+   * @return the request parameter, or the default value if the parameter
+   *         was not specified by the client
+   */
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
   }
 }
