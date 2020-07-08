@@ -5,7 +5,9 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+
     <script src="js/script.js"></script>
     <script src="js/portfolioScript.js"></script>
   </head>
@@ -77,13 +79,17 @@
       </form>
       <div id="comment-container" class="pt-5">
         <h5 class="mb-5">Comments</h5>
-          <div class="media-template card d-none px-4 pt-3 pb-1 mb-3">
+          <div class="media-template card d-none px-4 pt-3 pb-1">
             <div class="media text-left">
-              <img src="https://raw.githubusercontent.com/wayou/anonymous-animals/master/icons/Nyan%20Cat.png" class="mr-3" alt="avatar" width="70">
+              <img src="https://raw.githubusercontent.com/wayou/anonymous-animals/master/icons/Nyan%20Cat.png" class="mr-3" alt="avatar" width="50">
               <div class="media-body">
                 <h5 class="mt-0"></h5>
               </div>
             </div>
+            <div class="d-flex flex-row-reverse mb-2">
+                <button class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt mr-1"></i>Delete</button>
+                <button class="btn btn-outline-primary btn-sm mr-1"><i class="fas fa-reply mr-1"></i>Reply</button>
+              </div>
           </div>
       </div>
     </div>
