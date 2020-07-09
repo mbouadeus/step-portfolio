@@ -89,12 +89,12 @@ async function printComments(url) {
   } else {
     
     // If comments have been posted, print it.
-    let name, nameElem, comment, commentElem, timeElem, mediaClone;
+    let name, nameElem, comment, commentElem, timeElem, idElem, mediaClone;
     const commentContainer = document.getElementById('comment-container');
     const mediaElem = document.getElementsByClassName('media-template')[0];
     commentsJson.forEach(commentInfo => {
-      name = commentInfo[1];
-      comment = commentInfo[2];
+      name = commentInfo[2];
+      comment = commentInfo[3];
 
       mediaClone = mediaElem.cloneNode(true);
       mediaClone.classList.remove('d-none');
@@ -103,8 +103,10 @@ async function printComments(url) {
       nameElem.innerText = name;
 
       timeElem = mediaClone.querySelector('.comment-timestamp');
-      timeElem.innerText = timestampToString(commentInfo[0]);
-      console.log(commentInfo[0]);
+      timeElem.innerText = timestampToString(commentInfo[1]);
+      
+      idElem = mediaClone.querySelector('.comment-key');
+      idElem.value = commentInfo[0];
 
       commentElem = mediaClone.querySelector('.media-body');
       commentElem.append(comment);
@@ -146,3 +148,21 @@ function timestampToString(timestamp) {
     }
     return time + " ago";
 }
+
+ /**
+ * Delete comment from datastore
+ */
+
+ function deleteComment(button) {
+   // Get key from comment
+   const keyElem = button.parentElement.querySelector('.comment-key');
+
+   // Append key to form element
+   const formElem = $("<form action='/portfolio-comment-delete' method='POST' class='d-none'></form>");
+   formElem.append(keyElem);
+
+   // Append form to DOM
+   document.body.append(formElem.get(0));
+
+   formElem.submit();
+ }

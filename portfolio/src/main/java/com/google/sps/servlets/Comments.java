@@ -10,6 +10,7 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.appengine.api.datastore.KeyFactory;
 
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -37,7 +38,7 @@ public class Comments {
 
     // Interate through entities in query results
     for (Entity entity : results.asIterable()) {
-      long id = entity.getKey().getId();
+      String key = KeyFactory.keyToString(entity.getKey());
     
       // Retrieve comment inputs from entity
       String name = (String) entity.getProperty("name");
@@ -45,7 +46,7 @@ public class Comments {
       String timestamp = (String) entity.getProperty("timestamp");
 
       // Store comment
-      comments.add(Arrays.asList(timestamp, name, comment));
+      comments.add(Arrays.asList(key, timestamp, name, comment));
     }
     
     Gson gson = new Gson();
@@ -77,14 +78,28 @@ public class Comments {
   }
 
   /**
-   * @return the request parameter, or the default value if the parameter
-   *         was not specified by the client
-   */
+  * @return the request parameter, or the default value if the parameter
+  *         was not specified by the client
+  */
   private static String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
     if (value == null) {
       return defaultValue;
     }
     return value;
+  }
+
+  /**
+  * Delete comment from datastore at specified ID
+  */
+  public static void deleteComment(String collectionID, HttpServletRequest request) {
+    // Get the id from the form.
+    String key = getParameter(request, "key", "");
+    
+    // Get database instance
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+    // Delete comment
+    datastore.delete(KeyFactory.stringToKey(key));
   }
 }
