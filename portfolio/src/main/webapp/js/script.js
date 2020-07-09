@@ -78,7 +78,7 @@ async function getCommentFromServer(url) {
 async function printComments(url) {
   const commentsJson = await getCommentFromServer(url);
 
-  if (commentsJson[0].length === 0) {
+  if (commentsJson.length === 0) {
 
     // If comments have not been posted, print 'empty' message.
     const msgElement = document.createElement('p');
@@ -89,7 +89,7 @@ async function printComments(url) {
   } else {
     
     // If comments have been posted, print it.
-    let name, nameElem, comment, commentElem, mediaClone;
+    let name, nameElem, comment, commentElem, timeElem, mediaClone;
     const commentContainer = document.getElementById('comment-container');
     const mediaElem = document.getElementsByClassName('media-template')[0];
     commentsJson.forEach(commentInfo => {
@@ -102,10 +102,47 @@ async function printComments(url) {
       nameElem = mediaClone.querySelector('h5');
       nameElem.innerText = name;
 
+      timeElem = mediaClone.querySelector('.comment-timestamp');
+      timeElem.innerText = timestampToString(commentInfo[0]);
+      console.log(commentInfo[0]);
+
       commentElem = mediaClone.querySelector('.media-body');
       commentElem.append(comment);
 
       commentContainer.appendChild(mediaClone);
     });
   }
+}
+
+function timestampToString(timestamp) {
+  // Get time difference from current time
+  timestamp = new Date().getTime() - Number(timestamp);
+
+  if (timestamp < 60000)
+    return "just now";
+
+    let time = "";
+
+    // Establish break points for minutes, hours, days, and so on.
+    const timesConv = [{time: 31557600000, tStr: ' year'},
+        {time: 2629800000, tStr: ' month'},
+        {time: 604800017, tStr: ' week'},
+        {time: 86400000, tStr: ' day'},
+        {time: 3600000, tStr: ' hour'},
+        {time: 60000, tStr: ' minute'},
+    ];
+
+    // Break up the timestamp into time measurements.
+    for (const timeConv of timesConv) {
+        if (timestamp >= timeConv.time) {
+            let num = timestamp / timeConv.time;
+
+            if (num >= 2)
+            time += Math.floor(num) + timeConv.tStr + 's';
+            else
+            time += Math.floor(num) + timeConv.tStr;
+            break;
+        }
+    }
+    return time + " ago";
 }

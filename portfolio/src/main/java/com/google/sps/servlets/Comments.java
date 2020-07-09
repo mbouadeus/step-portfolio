@@ -11,6 +11,9 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,10 +42,10 @@ public class Comments {
       // Retrieve comment inputs from entity
       String name = (String) entity.getProperty("name");
       String comment = (String) entity.getProperty("comment");
-      long timestamp = (long) entity.getProperty("timestamp");
+      String timestamp = (String) entity.getProperty("timestamp");
 
       // Store comment
-      comments.add(Arrays.asList(Long.toString(timestamp), name, comment));
+      comments.add(Arrays.asList(timestamp, name, comment));
     }
     
     Gson gson = new Gson();
@@ -58,7 +61,7 @@ public class Comments {
     // Get the input from the form.
     String name = getParameter(request, "name", "");
     String comment = getParameter(request, "comment", "");
-    long timestamp = System.currentTimeMillis();
+    String timestamp = new Long(Timestamp.from(Instant.now()).getTime()).toString();
 
     // Create datastore entity
     Entity commentEntity = new Entity(collectionID);
