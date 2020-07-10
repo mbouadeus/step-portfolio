@@ -202,8 +202,11 @@ function deleteComment(button) {
   // Get key from comment
   const keyElem = button.parentElement.querySelector('.comment-key');
 
+  // Create form element
+  const formAddress = document.getElementById('comment-form').getAttribute('action');
+  const formElem = $(`<form action="${formAddress}-delete" method="POST" class="d-none"></form>`);
+  
   // Append key to form element
-  const formElem = $("<form action='/portfolio-comment-delete' method='POST' class='d-none'></form>");
   formElem.append(keyElem);
 
   // Append form to DOM

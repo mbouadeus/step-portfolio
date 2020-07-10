@@ -20,10 +20,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/portfolio-comments")
-public class PortfolioComments extends HttpServlet {
+@WebServlet("/portfolio-comment")
+public class PortfolioComment extends HttpServlet {
 
-  private final String collectionID = "PortfolioComments";
+  private final String collectionID = "PortfolioComment";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

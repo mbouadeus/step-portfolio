@@ -20,17 +20,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/portfolio-comment-delete")
-public class PortfolioCommentDelete extends HttpServlet {
+@WebServlet("/blog-comment")
+public class BlogComment extends HttpServlet {
 
-  private final String collectionID = "PortfolioComment";
+  private final String collectionID = "BlogComment";
+
+  @Override
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    
+    // Get commments
+    String json = Comments.getComments(collectionID);
+
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+  }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Post comment.
-    Comments.deleteComment(collectionID, request);
+    Comments.postComment(collectionID, request);
 
     // Respond reload page.
-    response.sendRedirect("/portfolio.html");
+    response.sendRedirect("/blog.html");
   }
 }

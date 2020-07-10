@@ -20,10 +20,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/portfolio-comment-delete")
-public class PortfolioCommentDelete extends HttpServlet {
+@WebServlet("/blog-comment-delete")
+public class BlogCommentDelete extends HttpServlet {
 
-  private final String collectionID = "PortfolioComment";
+  private final String collectionID = "BlogComment";
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -31,6 +31,6 @@ public class PortfolioCommentDelete extends HttpServlet {
     Comments.deleteComment(collectionID, request);
 
     // Respond reload page.
-    response.sendRedirect("/portfolio.html");
+    response.sendRedirect("/blog.html");
   }
 }
