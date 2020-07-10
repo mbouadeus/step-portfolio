@@ -20,7 +20,7 @@ window.addEventListener('load', function () {
 
 /**
  * Adds a random backgournd wallpaper to the page.
- */
+*/
 function addRandomBackground() {
   // Pick a random wallpaper id.
   const id = Math.floor(Math.random() * 2);
@@ -30,7 +30,7 @@ function addRandomBackground() {
 
 /**
  * Adds background wallpaper that corresponds with id.
- */
+*/
 function addBackground(id) {
   const wallpapers = ['https://www.toptal.com/designers/subtlepatterns/patterns/y-so-serious-white.png',
   'https://www.toptal.com/designers/subtlepatterns/patterns/webb.png'];
@@ -45,7 +45,7 @@ function addBackground(id) {
 
 /**
  * Returns the id of the background that has been selected.
- */
+*/
 function getSelectedBackgroundId() {
   // Gets index of wallpaper selected from DOM.
   const id = Array.from(document.querySelector('.modal-body > .list-group').childNodes)
@@ -67,9 +67,9 @@ function setBackground() {
 
 /**
  * Retreives comments from server.
- */
+*/
 async function getCommentFromServer(url) {
-   return await fetch(url).then(response => response.json());
+  return await fetch(url).then(response => response.json());
 }
 
 /**
@@ -158,7 +158,9 @@ function printEmpty(comment, reply) {
     document.getElementById('comment-container').appendChild(msgElement);
 }
 
-
+/**
+* Converts timestamp to text describing past time.
+*/
 function timestampToString(timestamp) {
   // Get time difference from current time
   timestamp = new Date().getTime() - Number(timestamp);
@@ -166,53 +168,53 @@ function timestampToString(timestamp) {
   if (timestamp < 60000)
     return "just now";
 
-    let time = "";
+  let time = "";
 
-    // Establish break points for minutes, hours, days, and so on.
-    const timesConv = [{time: 31557600000, tStr: ' year'},
-        {time: 2629800000, tStr: ' month'},
-        {time: 604800017, tStr: ' week'},
-        {time: 86400000, tStr: ' day'},
-        {time: 3600000, tStr: ' hour'},
-        {time: 60000, tStr: ' minute'},
-    ];
+  // Establish break points for minutes, hours, days, and so on.
+  const timesConv = [{time: 31557600000, tStr: ' year'},
+    {time: 2629800000, tStr: ' month'},
+    {time: 604800017, tStr: ' week'},
+    {time: 86400000, tStr: ' day'},
+    {time: 3600000, tStr: ' hour'},
+    {time: 60000, tStr: ' minute'},
+  ];
 
-    // Break up the timestamp into time measurements.
-    for (const timeConv of timesConv) {
-        if (timestamp >= timeConv.time) {
-            let num = timestamp / timeConv.time;
+  // Break up the timestamp into time measurements.
+  for (const timeConv of timesConv) {
+    if (timestamp >= timeConv.time) {
+      let num = timestamp / timeConv.time;
 
-            if (num >= 2)
-            time += Math.floor(num) + timeConv.tStr + 's';
-            else
-            time += Math.floor(num) + timeConv.tStr;
-            break;
-        }
+      if (num >= 2)
+        time += Math.floor(num) + timeConv.tStr + 's';
+      else
+        time += Math.floor(num) + timeConv.tStr;
+      break;
     }
-    return time + " ago";
+  }
+  return time + " ago";
 }
 
- /**
- * Delete comment from datastore
- */
+/**
+* Delete comment from datastore
+*/
 
- function deleteComment(button) {
-   // Get key from comment
-   const keyElem = button.parentElement.querySelector('.comment-key');
+function deleteComment(button) {
+  // Get key from comment
+  const keyElem = button.parentElement.querySelector('.comment-key');
 
-   // Append key to form element
-   const formElem = $("<form action='/portfolio-comment-delete' method='POST' class='d-none'></form>");
-   formElem.append(keyElem);
+  // Append key to form element
+  const formElem = $("<form action='/portfolio-comment-delete' method='POST' class='d-none'></form>");
+  formElem.append(keyElem);
 
-   // Append form to DOM
-   document.body.append(formElem.get(0));
+  // Append form to DOM
+  document.body.append(formElem.get(0));
 
-   formElem.submit();
- }
+  formElem.submit();
+}
 
 /**
  * Set form to reply to comment.
- */
+*/
 
 function setFormReply(button) {
   // Get name of comment to be replied to

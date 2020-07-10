@@ -23,9 +23,9 @@ import java.util.HashMap;
 
 public class Comments {
 
-     /**
-   * Gets comments from datastore at specified ID
-   */
+  /**
+  * Gets comments from datastore at specified ID
+  */
   public static String getComments(String collectionID) {
     // Create datastore query
     Query query = new Query(collectionID).addSort("timestamp", SortDirection.DESCENDING);
@@ -75,9 +75,9 @@ public class Comments {
     return gson.toJson(arrangedComments);
   }
 
-    /**
-   * Post comment into datastore at specified ID
-   */
+  /**
+  * Post comment into datastore at specified ID
+  */
   public static void postComment(String collectionID, HttpServletRequest request) {
     // Get the input from the form.
     String name = getParameter(request, "name", "");
