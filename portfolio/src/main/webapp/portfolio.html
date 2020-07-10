@@ -25,7 +25,7 @@
             <i class="fas fa-cog d-inline align-middle"></i>
           </button>
           <div class="dropdown-menu" aria-labelledby="settingsDropdownMenuButton">
-            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#settingsModal">Background</a>
+            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#backgroundModal">Background</a>
             <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#languageModal">Language</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Separated link</a>
@@ -111,22 +111,23 @@
 
       </div>
     </div>
-    <!-- Background settings modal -->
-    <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="settingsModalLabel" aria-hidden="true">
+
+    <!-- Background Selection Modal -->
+    <div class="modal fade" id="backgroundModal" tabindex="-1" role="dialog" aria-labelledby="backgroundModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="settingsModalLabel">Background</h5>
+            <h5 class="modal-title" id="backgroundModalLabel">Background</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="list-group" role="tablist">
-              <button class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" role="tab" aria-controls="home">
+              <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab">
               Y-so-serious
               </button>
-              <button class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" role="tab" aria-controls="profile">
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
               Triangular Maze
               </button>
             </div>
@@ -175,7 +176,7 @@
         </div>
       </div>
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 

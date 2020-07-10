@@ -48,7 +48,7 @@ function addBackground(id) {
 */
 function getSelectedBackgroundId() {
   // Gets index of wallpaper selected from DOM.
-  const id = Array.from(document.querySelector('.modal-body > .list-group').childNodes)
+  const id = Array.from(document.querySelector('#backgroundModal .modal-body > .list-group').childNodes)
     .findIndex(listItem => listItem.classList && listItem.classList.contains('active'));
 
   return Math.floor(id / 2);
@@ -62,7 +62,7 @@ function setBackground() {
   addBackground(id);
 
   // Closes background selection menu.
-  $('#settingsModal').modal('hide');
+  $('#backgroundModal').modal('hide');
 }
 
 /**
