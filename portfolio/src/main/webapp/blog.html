@@ -19,9 +19,19 @@
         <li class="nav-item px-1"><a class="nav-link px-5" href="about.html">About</a></li>
         <li class="nav-item px-1"><a class="nav-link px-5" href="portfolio.html">Portfolio</a></li>
         <li class="nav-item px-1"><a class="nav-link px-5 active" href="blog.html">Blog</a></li>
-        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#settingsModal">
-        <i class="fas fa-cog d-inline align-middle"></i>
-        </button>
+        
+        <div class="dropdown"><!-- Settings dropdown button -->
+          <button class="btn btn-outline-primary dropdown-toggle" type="button" id="settingsDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-cog d-inline align-middle"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="settingsDropdownMenuButton">
+            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#settingsModal">Background</a>
+            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#languageModal">Language</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+
       </ul>
     </nav>
     <header class="wrapper card px-5 py-5 mb-5 text-center">
@@ -120,6 +130,44 @@
         </div>
       </div>
     </div>
+
+       <!-- Language Selection Modal -->
+    <div class="modal fade" id="languageModal" tabindex="-1" role="dialog" aria-labelledby="languageModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="languageModalLabel">Select Language</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="list-group" role="tablist">
+              <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab" >
+                English
+              </button>
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
+                Spanish
+              </button>
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
+                French
+              </button>
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
+                Portuguese
+              </button>
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
+                German
+              </button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onClick="setLanguage()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
