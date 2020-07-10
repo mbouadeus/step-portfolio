@@ -200,19 +200,20 @@ function timestampToString(timestamp) {
 
 function deleteComment(button) {
   // Get key from comment
-  const keyElem = button.parentElement.querySelector('.comment-key');
+  const keyValue = button.parentElement.querySelector('.comment-key').value;
+  console.log(keyValue);
 
-  // Create form element
-  const formAddress = document.getElementById('comment-form').getAttribute('action');
-  const formElem = $(`<form action="${formAddress}-delete" method="POST" class="d-none"></form>`);
+  // Get POST url from comment section form
+  const url = document.getElementById('comment-form').getAttribute('action') + '-delete';
   
-  // Append key to form element
-  formElem.append(keyElem);
-
-  // Append form to DOM
-  document.body.append(formElem.get(0));
-
-  formElem.submit();
+  // Send POST request to delete comment
+  fetch(url, {
+    method: "POST", 
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: `key=${keyValue}`
+  });
 }
 
 /**
