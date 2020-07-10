@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
@@ -122,13 +123,32 @@ public class Comments {
   * Delete comment from datastore at specified ID
   */
   public static void deleteComment(String collectionID, HttpServletRequest request) {
-    // Get the id from the form.
-    String key = getParameter(request, "key", "");
-    
-    // Get database instance
+    // Get the key string from the form.
+    String keyStr = getParameter(request, "key", "");
+
+    // Get key of comment
+    Key key = KeyFactory.stringToKey(keyStr);
+
+    // Prepare database to be queried
+    Query query = new Query(collectionID);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
-    // Delete comment
-    datastore.delete(KeyFactory.stringToKey(key));
+    // Get query results
+    PreparedQuery results = datastore.prepare(query);
+
+    Key parent;
+    // Interate through entities in query results
+    for (Entity entity : results.asIterable()) {
+
+      parent = entity.getParent();
+
+      if (parent != null && parent.equals(key)) {
+        // If comment is a reply to original comment, delete it.
+        datastore.delete(entity.getKey());
+      }
+    }
+
+    // Delete original comment.
+    datastore.delete(key);
   }
 }
