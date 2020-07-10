@@ -18,6 +18,8 @@ import java.time.Instant;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Comments {
 
@@ -34,25 +36,43 @@ public class Comments {
     // Get query results
     PreparedQuery results = datastore.prepare(query);
 
-    List<List<String>> comments = new ArrayList<>();
+    Map<String, List<List<String>>> comments = new HashMap<>();
+    List<String> arrangedKeys = new ArrayList<>();
 
     // Interate through entities in query results
     for (Entity entity : results.asIterable()) {
-      String key = KeyFactory.keyToString(entity.getKey());
-    
+      String key;
+
+      if (entity.getParent() != null) {
+        key = KeyFactory.keyToString(entity.getParent());
+      } else {
+        key = KeyFactory.keyToString(entity.getKey());
+      }
+
       // Retrieve comment inputs from entity
       String name = (String) entity.getProperty("name");
       String comment = (String) entity.getProperty("comment");
       String timestamp = (String) entity.getProperty("timestamp");
 
       // Store comment
-      comments.add(Arrays.asList(key, timestamp, name, comment));
+      if (!comments.containsKey(key)) {
+        comments.put(key, new ArrayList<List<String>>());
+        arrangedKeys.add(key);
+      }
+
+      comments.get(key).add(Arrays.asList(key, timestamp, name, comment));
+    }
+
+    List<List<List<String>>> arrangedComments = new ArrayList<>();
+
+    for (String key: arrangedKeys) {
+      arrangedComments.add(comments.get(key));
     }
     
     Gson gson = new Gson();
 
     // Return comments as Json
-    return gson.toJson(comments);
+    return gson.toJson(arrangedComments);
   }
 
     /**
@@ -65,7 +85,16 @@ public class Comments {
     String timestamp = new Long(Timestamp.from(Instant.now()).getTime()).toString();
 
     // Create datastore entity
-    Entity commentEntity = new Entity(collectionID);
+    Entity commentEntity;
+    String parentKey = getParameter(request, "reply", "");
+
+    if (!(parentKey.isEmpty())) {
+      // This is for reply comments
+      commentEntity = new Entity(collectionID, KeyFactory.stringToKey(parentKey));
+    } else {
+      // This is for original comments
+      commentEntity = new Entity(collectionID);
+    } 
 
     // Save comment inputs to entity
     commentEntity.setProperty("name", name);

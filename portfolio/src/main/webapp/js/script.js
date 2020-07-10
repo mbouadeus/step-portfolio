@@ -72,49 +72,92 @@ async function getCommentFromServer(url) {
    return await fetch(url).then(response => response.json());
 }
 
- /**
- * Dynamically appends comments from server to DOM.
- */
+/**
+* Dynamically appends comments from server to DOM.
+*/
 async function printComments(url) {
   const commentsJson = await getCommentFromServer(url);
 
   if (commentsJson.length === 0) {
 
-    // If comments have not been posted, print 'empty' message.
+    // If there are no comments.
+    printEmpty();
+  } else {
+    
+    // If comments have been posted, print it.
+
+    const commentContainer = document.getElementById('comment-container');
+    const mediaElem = document.querySelector('.media-template');
+
+    // Print each comment group
+    commentsJson.forEach(commentGroup => {
+
+      // Print each individual comment
+      for (let index = commentGroup.length-1; index >= 0; index--) {
+
+        if (index == commentGroup.length-1) {
+          // Original comment
+          printComment(commentGroup[index], false, mediaElem, commentContainer);
+        } else {
+          // Reply comment
+          printComment(commentGroup[index], true, mediaElem, commentContainer);
+        }
+      }
+
+    });
+  }
+}
+
+/**
+* Dynamically appends comment from server to comments section.
+*/
+function printComment(commentObj, reply, mediaElem, commentContainer) {
+
+  const name = commentObj[2];
+  const comment = commentObj[3];
+
+  // Create comment element
+  const mediaClone = mediaElem.cloneNode(true);
+  mediaClone.classList.remove('d-none');
+
+  // Reply comments
+  if (reply) {
+    mediaClone.classList.add('ml-5');
+    mediaClone.querySelector('.reply-btn').remove();
+  }
+
+  // Add name to comment element
+  const nameElem = mediaClone.querySelector('h5');
+  nameElem.innerText = name;
+
+  // Add time since posted to comment element
+  const timeElem = mediaClone.querySelector('.comment-timestamp');
+  timeElem.innerText = timestampToString(commentObj[1]);
+  
+  // Add key to comment element
+  const keyElem = mediaClone.querySelector('.comment-key');
+  keyElem.value = commentObj[0];
+
+  // Add comment text
+  const commentElem = mediaClone.querySelector('.media-body');
+  commentElem.append(comment);
+
+  // Append comment element to comment section in DOM
+  commentContainer.appendChild(mediaClone);
+}
+
+/**
+* Dynamically appends empty message to comment section.
+*/
+function printEmpty(comment, reply) {
+
+  // If comments have not been posted, print 'empty' message.
     const msgElement = document.createElement('p');
     msgElement.classList.add('lead');
     msgElement.innerText = "empty";
     document.getElementById('comment-container').appendChild(msgElement);
-
-  } else {
-    
-    // If comments have been posted, print it.
-    let name, nameElem, comment, commentElem, timeElem, idElem, mediaClone;
-    const commentContainer = document.getElementById('comment-container');
-    const mediaElem = document.getElementsByClassName('media-template')[0];
-    commentsJson.forEach(commentInfo => {
-      name = commentInfo[2];
-      comment = commentInfo[3];
-
-      mediaClone = mediaElem.cloneNode(true);
-      mediaClone.classList.remove('d-none');
-
-      nameElem = mediaClone.querySelector('h5');
-      nameElem.innerText = name;
-
-      timeElem = mediaClone.querySelector('.comment-timestamp');
-      timeElem.innerText = timestampToString(commentInfo[1]);
-      
-      idElem = mediaClone.querySelector('.comment-key');
-      idElem.value = commentInfo[0];
-
-      commentElem = mediaClone.querySelector('.media-body');
-      commentElem.append(comment);
-
-      commentContainer.appendChild(mediaClone);
-    });
-  }
 }
+
 
 function timestampToString(timestamp) {
   // Get time difference from current time
@@ -166,3 +209,29 @@ function timestampToString(timestamp) {
 
    formElem.submit();
  }
+
+/**
+ * Set form to reply to comment.
+ */
+
+function setFormReply(button) {
+  // Get name of comment to be replied to
+  const commentName = button.parentNode.parentNode.querySelector('.comment-name').innerText;
+
+  // Get key of comment to be replied to
+  const commentKey = button.parentNode.querySelector('.comment-key').value;
+
+  const replyContainer = document.getElementById('reply-container');
+
+  // Add reply label to comment form
+  const replyLabel = replyContainer.querySelector('span');
+  replyLabel.classList.remove('d-none');
+  replyLabel.innerText = `Reply to: ${commentName}`;
+
+  // Add reply key to comment form
+  const replyInput = replyContainer.querySelector('input');
+  replyInput.value = commentKey;
+
+  // Scroll comment form into window view
+  replyContainer.parentNode.parentNode.querySelector('h3').scrollIntoView();
+}

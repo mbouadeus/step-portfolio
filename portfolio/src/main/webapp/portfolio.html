@@ -68,8 +68,11 @@
     <div class="wrapper card px-5 py-5 mb-5 text-center"><!-- Portfolio Comments Section -->
       <h3 class="mb-5">Post Comments</h3>
       <form action="/portfolio-comments" method="POST">
+      <div id="reply-container" class="text-left">
+        <span class="btn btn-outline-info disabled mb-2 d-none"></span>
+        <input type="hidden" name="reply" />
+      </div>
       <div class="form-group">
-        
         <input type="text" class="form-control" placeholder="Your name" name="name">
       </div>
       <div class="form-group">
@@ -85,17 +88,17 @@
             <div class="media text-left">
               <img src="https://raw.githubusercontent.com/wayou/anonymous-animals/master/icons/Nyan%20Cat.png" class="mr-3" alt="avatar" width="50">
               <div class="media-body">
-                <h5 class="mt-0"></h5>
+                <h5 class="comment-name mt-0"></h5>
               </div>
               <div class="comment-timestamp text-muted text-small"></div>
             </div>
             <div class="d-flex flex-row-reverse mb-2">
-                <button class="btn btn-outline-danger btn-sm" onClick="deleteComment(this)"><i class="fas fa-trash-alt mr-1"></i>Delete</button>
-                <button class="btn btn-outline-primary btn-sm mr-1"><i class="fas fa-reply mr-1"></i>Reply</button>
+                <button class="delete-btn btn btn-outline-danger btn-sm" onClick="deleteComment(this)"><i class="fas fa-trash-alt mr-1"></i>Delete</button>
+                <button class="reply-btn btn btn-outline-primary btn-sm mr-1" onClick="setFormReply(this)"><i class="fas fa-reply mr-1"></i>Reply</button>
                 <input type="hidden" name="key" class="comment-key" />
             </div>
           </div>
-          
+
       </div>
     </div>
 
