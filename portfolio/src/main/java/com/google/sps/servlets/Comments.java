@@ -61,7 +61,8 @@ public class Comments {
         arrangedKeys.add(key);
       }
 
-      comments.get(key).add(Arrays.asList(key, timestamp, name, comment));
+      comments.get(key)
+        .add(Arrays.asList(KeyFactory.keyToString(entity.getKey()), timestamp, name, comment));
     }
 
     List<List<List<String>>> arrangedComments = new ArrayList<>();
