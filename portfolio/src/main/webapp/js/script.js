@@ -113,8 +113,8 @@ async function printComments(url) {
 */
 function printComment(commentObj, reply, mediaElem, commentContainer) {
 
-  const name = commentObj[2];
-  const comment = commentObj[3];
+  const name = commentObj.name;
+  const comment = commentObj.comment;
 
   // Create comment element
   const mediaClone = mediaElem.cloneNode(true);
@@ -132,11 +132,11 @@ function printComment(commentObj, reply, mediaElem, commentContainer) {
 
   // Add time since posted to comment element
   const timeElem = mediaClone.querySelector('.comment-timestamp');
-  timeElem.innerText = timestampToString(commentObj[1]);
+  timeElem.innerText = timestampToString(commentObj.timestamp);
   
   // Add key to comment element
   const keyElem = mediaClone.querySelector('.comment-key');
-  keyElem.value = commentObj[0];
+  keyElem.value = commentObj.key;
 
   // Add comment text
   const commentElem = mediaClone.querySelector('.media-body');

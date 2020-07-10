@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.sps.data.CommentUtility;
+
 @WebServlet("/blog-comment")
 public class BlogComment extends HttpServlet {
 
@@ -29,7 +31,7 @@ public class BlogComment extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
     // Get commments
-    String json = Comments.getComments(collectionID);
+    String json = CommentUtility.getComments(collectionID);
 
     response.setContentType("application/json;");
     response.getWriter().println(json);
@@ -38,7 +40,7 @@ public class BlogComment extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Post comment.
-    Comments.postComment(collectionID, request);
+    CommentUtility.postComment(collectionID, request);
 
     // Respond reload page.
     response.sendRedirect("/blog.html");

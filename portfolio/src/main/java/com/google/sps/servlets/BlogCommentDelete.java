@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.sps.data.CommentUtility;
+
 @WebServlet("/blog-comment-delete")
 public class BlogCommentDelete extends HttpServlet {
 
@@ -28,7 +30,7 @@ public class BlogCommentDelete extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Post comment.
-    Comments.deleteComment(collectionID, request);
+    CommentUtility.deleteComment(collectionID, request);
 
     // Respond reload page.
     response.sendRedirect("/blog.html");

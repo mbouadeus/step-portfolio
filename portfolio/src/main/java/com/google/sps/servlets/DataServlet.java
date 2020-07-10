@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.sps.data.CommentUtility;
+
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
@@ -28,7 +30,7 @@ public class DataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
     // Get commments
-    String json = Comments.getComments("Comment");
+    String json = CommentUtility.getComments("Comment");
 
     response.setContentType("application/json;");
     response.getWriter().println(json);
@@ -37,7 +39,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Post comment.
-    Comments.postComment("Comment", request);
+    CommentUtility.postComment("Comment", request);
 
     // Respond reload page.
     response.sendRedirect("/ServerSideTrainings.html");

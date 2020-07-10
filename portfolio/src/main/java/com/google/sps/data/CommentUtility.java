@@ -1,4 +1,4 @@
-package com.google.sps.servlets;
+package com.google.sps.data;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,9 +22,9 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 
-import java.util.Enumeration;
+public final class CommentUtility {
 
-public class Comments {
+  private CommentUtility(){}
 
   /**
   * Gets comments from datastore at specified ID
@@ -39,7 +39,7 @@ public class Comments {
     // Get query results
     PreparedQuery results = datastore.prepare(query);
 
-    Map<String, List<List<String>>> comments = new HashMap<>();
+    Map<String, List<Comment>> commentsMap = new HashMap<>();
     List<String> arrangedKeys = new ArrayList<>();
 
     // Interate through entities in query results
@@ -58,25 +58,25 @@ public class Comments {
       String timestamp = (String) entity.getProperty("timestamp");
 
       // Store comment
-      if (!comments.containsKey(key)) {
-        comments.put(key, new ArrayList<List<String>>());
+      if (!commentsMap.containsKey(key)) {
+        commentsMap.put(key, new ArrayList<Comment>());
         arrangedKeys.add(key);
       }
 
-      comments.get(key)
-        .add(Arrays.asList(KeyFactory.keyToString(entity.getKey()), timestamp, name, comment));
+      commentsMap.get(key)
+        .add(new Comment(name, comment, timestamp, KeyFactory.keyToString(entity.getKey())));
     }
 
-    List<List<List<String>>> arrangedComments = new ArrayList<>();
+    List<List<Comment>> arrangedCommentsList = new ArrayList<>();
 
     for (String key: arrangedKeys) {
-      arrangedComments.add(comments.get(key));
+      arrangedCommentsList.add(commentsMap.get(key));
     }
     
     Gson gson = new Gson();
 
     // Return comments as Json
-    return gson.toJson(arrangedComments);
+    return gson.toJson(arrangedCommentsList);
   }
 
   /**
