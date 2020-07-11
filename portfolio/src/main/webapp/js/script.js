@@ -206,13 +206,21 @@ function deleteComment(button) {
   // Get POST url from comment section form
   const url = document.getElementById('comment-form').getAttribute('action') + '-delete';
   
-  // Send POST request to delete comment
-  fetch(url, {
+  // Send POST request to delete comment and reload page
+  const body = `key=${keyValue}`;
+  postRequest(url, body).then(() => location.reload());
+}
+
+/**
+* Make POST request
+*/
+async function postRequest(url, body) {
+  return await fetch(url, {
     method: "POST", 
     headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: `key=${keyValue}`
+    body: body
   });
 }
 
