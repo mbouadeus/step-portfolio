@@ -145,19 +145,6 @@ function deleteComment(button) {
 }
 
 /**
-* Make POST request
-*/
-async function postRequest(url, body) {
-  return await fetch(url, {
-    method: "POST", 
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: body
-  });
-}
-
-/**
  * Set form to reply to comment.
 */
 
