@@ -84,13 +84,13 @@ public final class CommentUtility {
   */
   public static void postComment(String collectionID, HttpServletRequest request) {
     // Get the input from the form.
-    String name = getParameter(request, "name", "");
-    String comment = getParameter(request, "comment", "");
+    String name = GeneralUtility.getParameter(request, "name", "");
+    String comment = GeneralUtility.getParameter(request, "comment", "");
     String timestamp = new Long(Timestamp.from(Instant.now()).getTime()).toString();
 
     // Create datastore entity
     Entity commentEntity;
-    String parentKey = getParameter(request, "reply", "");
+    String parentKey = GeneralUtility.getParameter(request, "reply", "");
 
     if (!(parentKey.isEmpty())) {
       // This is for reply comments
@@ -111,23 +111,11 @@ public final class CommentUtility {
   }
 
   /**
-  * @return the request parameter, or the default value if the parameter
-  *         was not specified by the client
-  */
-  private static String getParameter(HttpServletRequest request, String name, String defaultValue) {
-    String value = request.getParameter(name);
-    if (value == null) {
-      return defaultValue;
-    }
-    return value;
-  }
-
-  /**
   * Delete comment from datastore at specified ID
   */
   public static void deleteComment(String collectionID, HttpServletRequest request) {
     // Get the key string from the form.
-    String keyStr = getParameter(request, "key", "");
+    String keyStr = GeneralUtility.getParameter(request, "key", "");
 
     // Get key of comment
     Key key = KeyFactory.stringToKey(keyStr);
