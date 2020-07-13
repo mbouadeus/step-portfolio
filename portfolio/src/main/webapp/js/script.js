@@ -21,11 +21,17 @@ window.addEventListener('load', function () {
 * Make POST request
 */
 async function postRequest(url, body) {
+  // Create request parameters object
+  const params = new URLSearchParams();
+
+  // Append all parameters into it.
+  for (const key in body) {
+    params.append(key, body[key]);
+  }
+
+  // Make POST request
   return await fetch(url, {
     method: "POST", 
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: body
+    body: params
   });
 }

@@ -140,7 +140,7 @@ function deleteComment(button) {
   const url = document.getElementById('comment-form').getAttribute('action') + '-delete';
   
   // Send POST request to delete comment and reload page
-  const body = `key=${keyValue}`;
+  const body = {key: keyValue};
   postRequest(url, body).then(() => location.reload());
 }
 
