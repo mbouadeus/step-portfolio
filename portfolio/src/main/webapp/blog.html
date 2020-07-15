@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script src="js/script.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/language.js"></script>
     <script src="js/comments.js"></script>
     <script src="js/blogScript.js"></script>
+
   </head>
   <body class="container">
     <nav class="wrapper border navbar navbar-expand-lg navbar-light py-4 my-5">
@@ -69,26 +72,31 @@
 
     <div class="wrapper card px-5 py-5 mb-5 text-center"><!-- Blog Comments Section -->
       <h3 class="mb-5">Post Comments</h3>
-      <form id="comment-form" action="/blog-comment" method="POST"><!-- Comment Section form -->
-      <div id="reply-container" class="text-left">
-        <span class="btn btn-outline-info disabled mb-2 d-none"></span>
-        <input type="hidden" name="reply" />
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Your name" name="name">
-      </div>
-      <div class="form-group">
-
-        <textarea class="form-control" rows="3" placeholder="Your comment" name="comment"></textarea>
-      </div>
-      <input type="submit" class="btn btn-outline-primary px-5"/>
+      <form id="comment-form" method="POST" enctype="multipart/form-data" class="/blog-comment"><!-- Comment Section form -->
+        <div id="reply-container" class="text-left">
+          <span class="btn btn-outline-info disabled mb-2 d-none"></span>
+          <input type="hidden" name="reply" />
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Your name" name="name" required>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" rows="3" placeholder="Your comment" name="comment" required></textarea>
+        </div>
+        <div class="form-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="imageFile" name="image">
+            <label class="custom-file-label" for="imageFile">Upload Image</label>
+          </div>
+        </div>
+        <input type="submit" class="btn btn-outline-primary px-5"/>
       </form>
       <div id="comment-container" class="pt-5">
         <h5 class="mb-5">Comments</h5>
 
-        <div class="media-template card d-none px-4 pt-3 pb-1 mb-3">
+         <div class="media-template card d-none px-4 pt-3 pb-1 mb-3">
           <div class="media text-left">
-            <img src="https://raw.githubusercontent.com/wayou/anonymous-animals/master/icons/Nyan%20Cat.png" class="mr-3" alt="avatar" width="50">
+            <img src="https://raw.githubusercontent.com/wayou/anonymous-animals/master/icons/Nyan%20Cat.png" class="rounded-lg mr-3" alt="avatar" width="50">
             <div class="media-body">
               <h5 class="comment-name mt-0"></h5>
             </div>

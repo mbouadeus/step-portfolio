@@ -6,9 +6,29 @@ async function getCommentFromServer(url) {
 }
 
 /**
+ * Get blobstore upload url from server and set it to form.
+*/
+async function setFormUploadUrl() {
+  const url = await postRequest('comment-upload-url', {redirectUrl: getServletUrl()})
+    .then(response => response.text());
+
+  document.getElementById('comment-form').action = url;
+}
+
+/**
+ * Get get the servlet url of the comment section.
+*/
+function getServletUrl() {
+  return document.getElementById('comment-form').classList[0];
+}
+
+/**
 * Dynamically appends comments from server to DOM.
 */
-async function printComments(url) {
+async function printComments() {
+
+  const url = getServletUrl();
+
   const commentsJson = await getCommentFromServer(url);
 
   if (commentsJson.length === 0) {
@@ -75,6 +95,13 @@ function printComment(commentObj, reply, mediaElem, commentContainer) {
   const commentElem = mediaClone.querySelector('.media-body');
   commentElem.append(comment);
 
+  // Add comment image if exists
+  const imageUrl = commentObj.imageUrl;
+
+  if (imageUrl !== "") {
+    mediaClone.querySelector('img').src = imageUrl;
+  }
+
   // Append comment element to comment section in DOM
   commentContainer.appendChild(mediaClone);
 }
@@ -137,7 +164,7 @@ function deleteComment(button) {
   console.log(keyValue);
 
   // Get POST url from comment section form
-  const url = document.getElementById('comment-form').getAttribute('action') + '-delete';
+  const url = getServletUrl() + '-delete';
   
   // Send POST request to delete comment and reload page
   const body = {key: keyValue};
