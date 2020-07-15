@@ -23,17 +23,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/** 
+* Servlet that translates text to another language and returns it. 
+*/
 @WebServlet("/translate")
 public class TranslationServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    
+    System.out.println("Start");
     // Get the request parameters.
     String originalText = request.getParameter("text");
     String languageCode = request.getParameter("languageCode");
-
+    
     // Do the translation.
     Translate translate = TranslateOptions.getDefaultInstance().getService();
     Translation translation =
