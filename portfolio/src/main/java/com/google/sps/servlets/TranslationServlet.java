@@ -31,7 +31,7 @@ public class TranslationServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    System.out.println("Start");
+
     // Get the request parameters.
     String originalText = request.getParameter("text");
     String languageCode = request.getParameter("languageCode");
