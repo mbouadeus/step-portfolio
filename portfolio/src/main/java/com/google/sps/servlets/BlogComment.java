@@ -22,15 +22,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.sps.data.CommentUtility;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
-public class DataServlet extends HttpServlet {
+@WebServlet("/blog-comment")
+public class BlogComment extends HttpServlet {
+
+  private final String collectionID = "BlogComment";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
     // Get commments
-    String json = CommentUtility.getComments("Comment");
+    String json = CommentUtility.getComments(collectionID);
 
     response.setContentType("application/json;");
     response.getWriter().println(json);
@@ -39,9 +40,9 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Post comment.
-    CommentUtility.postComment("Comment", request);
+    CommentUtility.postComment(collectionID, request);
 
     // Respond reload page.
-    response.sendRedirect("/ServerSideTrainings.html");
+    response.sendRedirect("/blog.html");
   }
 }

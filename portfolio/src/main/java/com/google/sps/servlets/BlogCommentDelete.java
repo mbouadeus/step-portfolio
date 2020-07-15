@@ -22,26 +22,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.sps.data.CommentUtility;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
-public class DataServlet extends HttpServlet {
+@WebServlet("/blog-comment-delete")
+public class BlogCommentDelete extends HttpServlet {
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    
-    // Get commments
-    String json = CommentUtility.getComments("Comment");
-
-    response.setContentType("application/json;");
-    response.getWriter().println(json);
-  }
+  private final String collectionID = "BlogComment";
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Post comment.
-    CommentUtility.postComment("Comment", request);
+    CommentUtility.deleteComment(collectionID, request);
 
     // Respond reload page.
-    response.sendRedirect("/ServerSideTrainings.html");
+    response.sendRedirect("/blog.html");
   }
 }

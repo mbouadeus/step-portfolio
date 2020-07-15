@@ -5,9 +5,9 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <script src="ServerSideTrainings.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <script src="js/ServerSideTrainings.js"></script>
   </head>
   <body class="container">
     <nav class="wrapper border navbar navbar-expand-lg navbar-light py-4 my-5">
@@ -41,9 +41,35 @@
         <p class="lead">
           Press the button bellow to print inspirational quotes.
         </p>
-        <button type="button" class="btn btn-outline-primary mb-4" onClick="printQuotes()">
+        <button type="button" class="btn btn-outline-primary mb-4" onClick="printQuotes()" disabled>
         Get Quotes
         </button>
+      </div>
+      <div class="wrapper card px-5 py-5 mb-5 text-center">
+        <h1 class="mb-3">Post Comment</h1>
+       
+        <form action="/data" method="POST">
+        <div class="form-group">
+          <label for="name-input">Name</label>
+          <input type="text" class="form-control" id="name-input" placeholder="Your name" name="name">
+        </div>
+        <div class="form-group">
+          <label for="comment-input">Comment</label>
+          <textarea class="form-control" id="comment-input" rows="3" placeholder="Your comment" name="comment"></textarea>
+        </div>
+        <input type="submit" class="btn btn-outline-primary" />
+        </form>
+        <div id="comment-container" class="pt-5">
+          <h3 class="mb-5">Comment</h3>
+            <div class="media-template card d-none px-4 pt-3 pb-1 mb-3">
+              <div class="media text-left">
+                <img src="https://raw.githubusercontent.com/wayou/anonymous-animals/master/icons/Nyan%20Cat.png" class="mr-3" alt="avatar" width="70">
+                <div class="media-body">
+                  <h5 class="mt-0"></h5>
+                </div>
+              </div>
+            </div>
+        </div>
       </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
