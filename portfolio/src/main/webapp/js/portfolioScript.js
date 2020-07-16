@@ -1,4 +1,8 @@
 window.addEventListener('load', async function () {
+
   // Retrieve and print portfolio comments.
-  await printComments("/portfolio-comment");
+  await printComments();
+  
+  // Set comment upload url from blobstore unto the comment form
+  await setFormUploadUrl();
 });

@@ -2,31 +2,43 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Home | My Portfolio</title>
+    <title data-translate>Home | My Portfolio</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/language.js"></script>
   </head>
   <body class="container">
     <nav class="wrapper border navbar navbar-expand-lg navbar-light py-4 my-5">
       <!-- navigation bar -->
       <ul id="navbar" class="nav nav-pills mx-auto">
-        <li class="nav-item px-1"><a class="nav-link px-5 active" href="index.html">Home</a></li>
-        <li class="nav-item px-1"><a class="nav-link px-5" href="about.html">About</a></li>
-        <li class="nav-item px-1"><a class="nav-link px-5" href="portfolio.html">Portfolio</a></li>
-        <li class="nav-item px-1"><a class="nav-link px-5" href="blog.html">Blog</a></li>
-        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#settingsModal">
-        <i class="fas fa-cog d-inline align-middle"></i>
-        </button>
+        <li class="nav-item px-1"><a class="nav-link px-5 active" href="index.html" data-translate>Home</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5" href="about.html" data-translate>About</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5" href="portfolio.html" data-translate>Portfolio</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5" href="blog.html" data-translate>Blog</a></li>
+
+        <div class="dropdown"><!-- Settings dropdown button -->
+          <button class="btn btn-outline-primary dropdown-toggle" type="button" id="settingsDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-cog d-inline align-middle"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="settingsDropdownMenuButton">
+            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#backgroundModal" data-translate>Background</a>
+            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#languageModal" data-translate>Language</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+
       </ul>
     </nav>
     <main class="wrapper border py-5">
       <div class="row px-5 mb-5 text-center">
-        <h1 class="mb-5 d-inline-block mx-auto">Hello, my name is Steve Mbouadeu</h1>
+        <h1 class="mb-5 d-inline-block mx-auto" data-translate>Hello, my name is Steve Mbouadeu</h1>
         <!-- page heading -->
-        <p class="lead">
+        <p class="lead" data-translate>
           <!-- page main content -->
           I'm a Google STEP intern with a passion for software engineering. 
           I enjoy using new technologies to develop innovative and exciting applications. 
@@ -37,42 +49,82 @@
       <div class="row">
         <div class="col-6 px-1 text-right">
           <!-- button to portfolio page -->
-          <a href="portfolio.html" role="button" class="btn btn-primary btn-lg ml-2">
+          <a href="portfolio.html" role="button" class="btn btn-primary btn-lg ml-2" data-translate>
           <i class="fas fa-th-large pr-1"></i>
           Browse Projects</a>
         </div>
         <div class="col-6 px-1">
           <!-- button to resume -->
-          <a href="https://smbouadeu-projects.s3.us-east-2.amazonaws.com/My+Website/content/Resume.pdf" target="_blank" role="button" class="btn btn-secondary btn-lg">Resume</a>
+          <a href="https://smbouadeu-projects.s3.us-east-2.amazonaws.com/My+Website/content/Resume.pdf" target="_blank" role="button" class="btn btn-secondary btn-lg" data-translate>Resume</a>
         </div>
       </div>
     </main>
-    <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="settingsModalLabel" aria-hidden="true">
+
+    <!-- Background Selection Modal -->
+    <div class="modal fade" id="backgroundModal" tabindex="-1" role="dialog" aria-labelledby="backgroundModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="settingsModalLabel">Background</h5>
+            <h5 class="modal-title" id="backgroundModalLabel" data-translate>Background</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="list-group" role="tablist">
-              <button class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" role="tab" aria-controls="home">
+              <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab" data-translate>
               Y-so-serious
               </button>
-              <button class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" role="tab" aria-controls="profile">
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" data-translate>
               Triangular Maze
               </button>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onClick="setBackground()">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" data-translate>Close</button>
+            <button type="button" class="btn btn-primary" onClick="setBackground()" data-translate>Save changes</button>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Language Selection Modal -->
+    <div class="modal fade" id="languageModal" tabindex="-1" role="dialog" aria-labelledby="languageModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="languageModalLabel" data-translate>Select Language</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="list-group" role="tablist">
+              <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab" data-translate>
+                English
+              </button>
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" data-translate>
+                Spanish
+              </button>
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" data-translate>
+                French
+              </button>
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" data-translate>
+                Portuguese
+              </button>
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" data-translate>
+                German
+              </button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" data-translate>Close</button>
+            <button type="button" class="btn btn-primary" onClick="setLanguage()" data-translate>Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
