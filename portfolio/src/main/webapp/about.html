@@ -2,31 +2,34 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>About Me | My Portfolio</title>
+    <title data-translate>About Me | My Portfolio</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    
     <script src="js/script.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/language.js"></script>
   </head>
   <body class="container">
     <nav class="wrapper border navbar navbar-expand-lg navbar-light py-4 my-5">
       <!-- navigation bar -->
       <ul id="navbar" class="nav nav-pills mx-auto">
-        <li class="nav-item px-1"><a class="nav-link px-5" href="index.html">Home</a></li>
-        <li class="nav-item px-1"><a class="nav-link px-5 active" href="about.html">About</a></li>
-        <li class="nav-item px-1"><a class="nav-link px-5" href="portfolio.html">Portfolio</a></li>
-        <li class="nav-item px-1"><a class="nav-link px-5" href="blog.html">Blog</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5" href="index.html" data-translate>Home</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5 active" href="about.html" data-translate>About</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5" href="portfolio.html" data-translate>Portfolio</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5" href="blog.html" data-translate>Blog</a></li>
         
         <div class="dropdown"><!-- Settings dropdown button -->
           <button class="btn btn-outline-primary dropdown-toggle" type="button" id="settingsDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-cog d-inline align-middle"></i>
           </button>
           <div class="dropdown-menu" aria-labelledby="settingsDropdownMenuButton">
-            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#backgroundModal">Background</a>
-            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#languageModal">Language</a>
+            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#backgroundModal" data-translate>Background</a>
+            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#languageModal" data-translate>Language</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
+            <a class="dropdown-item" href="#" data-translate>Separated link</a>
           </div>
         </div>
 
@@ -37,12 +40,12 @@
         <div class="col-5 text-center align-middle">
           <img id="about-profile-img" src="images/profile-img.jpg" alt="profile image" class="mb-4 rounded-lg"/>
           <h4 class="mb-0">Steve Mbouadeu</h4>
-          <p class="lead">Google STEP Intern</p>
+          <p class="lead" data-translate>Google STEP Intern</p>
         </div>
         <div class="col-7">
-          <h1 class="mb-3">About Myself</h1>
+          <h1 class="mb-3" data-translate>About Myself</h1>
           <!-- page heading -->
-          <p class="lead">
+          <p class="lead" data-translate>
             <!-- page main content -->
             I'm a Google STEP intern with a passion for software engineering. 
             I enjoy using new technologies to develop innovative and exciting applications. 
@@ -52,19 +55,25 @@
           <div>
             <div class="d-inline-block">
               <div class="d-flex flex-column text-center">
-                <a role="button" class="btn btn-primary btn-lg" href="https://smbouadeu-projects.s3.us-east-2.amazonaws.com/My+Website/content/Resume.pdf" target="_blank">Resume</a>  <!-- button to resume -->
-                <a class="btn-link" role="button" href="https://drive.google.com/uc?export=download&id=198qk0Tia1zbfkhANFIcHeI9jsL6dsirA" target="_blank" alt="download link"><i class="fas fa-arrow-down"></i>Download</a>  <!-- button to download resume -->
+                <a role="button" class="btn btn-primary btn-lg" href="https://smbouadeu-projects.s3.us-east-2.amazonaws.com/My+Website/content/Resume.pdf" target="_blank">
+                  <span data-translate>Resume</span>
+                </a>  <!-- button to resume -->
+                <a class="btn-link" role="button" href="https://drive.google.com/uc?export=download&id=198qk0Tia1zbfkhANFIcHeI9jsL6dsirA" target="_blank" alt="download link"><i class="fas fa-arrow-down"></i>
+                  <span data-translate>Download<span data-translate>
+                </a>  <!-- button to download resume -->
               </div>
             </div>
-            <a role="button" class="btn btn-outline-primary btn-lg" href="https://www.linkedin.com/in/stevembouadeu" target="_blank">Linkedin</a>  <!-- button to linkedin profile -->
+            <a role="button" class="btn btn-outline-primary btn-lg" href="https://www.linkedin.com/in/stevembouadeu" target="_blank">
+              <span data-translate>linkedin</span>
+            </a>  <!-- button to linkedin profile -->
           </div>
         </div>
       </div>
     </header>
     <main class="wrapper border text-center mb-5 p-5">
       <!-- gallery section -->
-      <h1 class="mb-5 d-inline-block mx-auto">My Gallery</h1>
-      <p class="lead mb-5">  
+      <h1 class="mb-5 d-inline-block mx-auto" data-translate>My Gallery</h1>
+      <p class="lead mb-5" data-translate>  
         I enjoy taking pictures of views and scenery that make me feel happy, sad, calm, or other special emotions. Take a peek at some of my favorites.
       </p>
       <!-- gallery images -->
@@ -78,7 +87,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="backgroundModalLabel">Background</h5>
+            <h5 class="modal-title" id="backgroundModalLabel" data-translate>Select background</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -86,53 +95,61 @@
           <div class="modal-body">
             <div class="list-group" role="tablist">
               <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab">
-              Y-so-serious
+                <span data-translate>Y-so-serious</span>
               </button>
               <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
-              Triangular Maze
+              <span data-translate>Triangular Maze</span>
               </button>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onClick="setBackground()">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              <span data-translate>Close</span>
+            </button>
+            <button type="button" class="btn btn-primary" onClick="setBackground()">
+              <span data-translate>Save changes</span>
+            </button>
           </div>
         </div>
       </div>
     </div>
 
-       <!-- Language Selection Modal -->
+    <!-- Language Selection Modal -->
     <div class="modal fade" id="languageModal" tabindex="-1" role="dialog" aria-labelledby="languageModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="languageModalLabel">Select Language</h5>
+            <h5 class="modal-title" id="languageModalLabel" data-translate>Select Language</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="list-group" role="tablist">
-              <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab" >
-                English
+              <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab" value="en">
+                <span data-translate>English</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
-                Spanish
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" value="es">
+                <span data-translate>Spanish</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
-                French
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" value="fr">
+                <span data-translate>French</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
-                Portuguese
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" value="pt">
+                <span data-translate>Portuguese</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
-                German
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" value="de">
+                <span data-translate>German</span>
               </button>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onClick="setLanguage()">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              <span data-translate>Close</span>
+            </button>
+            <button type="button" class="btn btn-primary" onClick="setLanguage(this)">
+              <span data-translate>Save changes</span>
+            </button>
           </div>
         </div>
       </div>

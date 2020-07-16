@@ -37,6 +37,7 @@ public class TranslationServlet extends HttpServlet {
     String languageCode = request.getParameter("languageCode");
     
     // Do the translation.
+    System.setProperty("GOOGLE_API_KEY", "AIzaSyBuuJDq78Vx1mSKig3-po2Z6LKhGAIdFRE");
     Translate translate = TranslateOptions.getDefaultInstance().getService();
     Translation translation =
         translate.translate(originalText, Translate.TranslateOption.targetLanguage(languageCode));

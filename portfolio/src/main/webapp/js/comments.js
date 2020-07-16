@@ -92,8 +92,8 @@ function printComment(commentObj, reply, mediaElem, commentContainer) {
   keyElem.value = commentObj.key;
 
   // Add comment text
-  const commentElem = mediaClone.querySelector('.media-body');
-  commentElem.append(comment);
+  const commentElem = mediaClone.querySelector('.media-body p');
+  commentElem.innerText = comment;
 
   // Add comment image if exists
   const imageUrl = commentObj.imageUrl;

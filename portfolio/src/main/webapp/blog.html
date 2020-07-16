@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Blog | My Portfolio</title>
+    <title data-translate>Blog | My Portfolio</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
@@ -19,43 +19,43 @@
     <nav class="wrapper border navbar navbar-expand-lg navbar-light py-4 my-5">
       <!-- navigation bar -->
       <ul id="navbar" class="nav nav-pills mx-auto">
-        <li class="nav-item px-1"><a class="nav-link px-5" href="index.html">Home</a></li>
-        <li class="nav-item px-1"><a class="nav-link px-5" href="about.html">About</a></li>
-        <li class="nav-item px-1"><a class="nav-link px-5" href="portfolio.html">Portfolio</a></li>
-        <li class="nav-item px-1"><a class="nav-link px-5 active" href="blog.html">Blog</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5" href="index.html" data-translate>Home</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5" href="about.html" data-translate>About</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5" href="portfolio.html" data-translate>Portfolio</a></li>
+        <li class="nav-item px-1"><a class="nav-link px-5 active" href="blog.html" data-translate>Blog</a></li>
         
         <div class="dropdown"><!-- Settings dropdown button -->
           <button class="btn btn-outline-primary dropdown-toggle" type="button" id="settingsDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-cog d-inline align-middle"></i>
           </button>
           <div class="dropdown-menu" aria-labelledby="settingsDropdownMenuButton">
-            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#backgroundModal">Background</a>
-            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#languageModal">Language</a>
+            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#backgroundModal" data-translate>Background</a>
+            <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#languageModal" data-translate>Language</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
+            <a class="dropdown-item" href="#" data-translate>Separated link</a>
           </div>
         </div>
 
       </ul>
     </nav>
     <header class="wrapper card px-5 py-5 mb-5 text-center">
-      <h1 class="mb-3">Daily Scoop</h1>
+      <h1 class="mb-3" data-translate>Daily Scoop</h1>
       <!-- page header -->
-      <p class="lead">
+      <p class="lead" data-translate>
         Follow me through my daily experiences and life journey.<br/>
         Here are some of the methods I utilize to make <br/>
         my life more enjoyable and fulfilling.
       </p>
       <div class="mt-2">
         <!-- blog article filters -->
-        <button type="button" class="btn btn-outline-primary btn-sm mb-2 active">Show All</button>
-        <button type="button" class="btn btn-outline-primary btn-sm mb-2">Books</button>
-        <button type="button" class="btn btn-outline-primary btn-sm mb-2">TV Shows</button>
-        <button type="button" class="btn btn-outline-primary btn-sm mb-2">Anime</button>
-        <button type="button" class="btn btn-outline-primary btn-sm mb-2">Manga</button><br/>
-        <button type="button" class="btn btn-outline-primary btn-sm">Productivity</button>
-        <button type="button" class="btn btn-outline-primary btn-sm">Life Hacks</button>
-        <button type="button" class="btn btn-outline-primary btn-sm">Miscellanious</button>
+        <button type="button" class="btn btn-outline-primary btn-sm mb-2 active"><span  data-translate>Show All</span></button>
+        <button type="button" class="btn btn-outline-primary btn-sm mb-2"><span  data-translate>Books</span></button>
+        <button type="button" class="btn btn-outline-primary btn-sm mb-2"><span  data-translate>TV Shows</span></button>
+        <button type="button" class="btn btn-outline-primary btn-sm mb-2"><span  data-translate>Anime</span></button>
+        <button type="button" class="btn btn-outline-primary btn-sm mb-2"><span  data-translate>Manga</span></button><br/>
+        <button type="button" class="btn btn-outline-primary btn-sm"><span  data-translate>Productivity</span></button>
+        <button type="button" class="btn btn-outline-primary btn-sm"><span  data-translate>Life Hacks</span></button>
+        <button type="button" class="btn btn-outline-primary btn-sm"><span  data-translate>Miscellanious</span></button>
       </div>
     </header>
     <main class="mb-5">
@@ -63,7 +63,7 @@
       <div class="port-card d-inline-block col-6 px-1">
         <div class="card p-2 rounded">
           <div class="ribbon">
-            <div class="label font-weight-bold">NEW</div>
+            <div class="label font-weight-bold"  data-translate>NEW</div>
           </div>
           <img src="images/placeholder-2.png" alt="card placeholder" class="port-card-img"/>
         </div>
@@ -71,7 +71,7 @@
     </main>
 
     <div class="wrapper card px-5 py-5 mb-5 text-center"><!-- Blog Comments Section -->
-      <h3 class="mb-5">Post Comments</h3>
+      <h3 class="mb-5"  data-translate>Post Comments</h3>
       <form id="comment-form" method="POST" enctype="multipart/form-data" class="/blog-comment"><!-- Comment Section form -->
         <div id="reply-container" class="text-left">
           <span class="btn btn-outline-info disabled mb-2 d-none"></span>
@@ -86,25 +86,26 @@
         <div class="form-group">
           <div class="custom-file">
             <input type="file" class="custom-file-input" id="imageFile" name="image">
-            <label class="custom-file-label" for="imageFile">Upload Image</label>
+            <label class="custom-file-label" for="imageFile" data-translate>Upload Image</label>
           </div>
         </div>
-        <input type="submit" class="btn btn-outline-primary px-5"/>
+        <input type="submit" class="btn btn-outline-primary px-5">
       </form>
       <div id="comment-container" class="pt-5">
-        <h5 class="mb-5">Comments</h5>
+        <h5 class="mb-5" data-translate>Comments</h5>
 
          <div class="media-template card d-none px-4 pt-3 pb-1 mb-3">
           <div class="media text-left">
             <img src="https://raw.githubusercontent.com/wayou/anonymous-animals/master/icons/Nyan%20Cat.png" class="rounded-lg mr-3" alt="avatar" width="50">
             <div class="media-body">
-              <h5 class="comment-name mt-0"></h5>
+              <h5 class="comment-name mt-0" data-translate></h5>
+              <p data-translate></p>
             </div>
-            <div class="comment-timestamp text-muted text-small"></div>
+            <div class="comment-timestamp text-muted text-small" data-translate></div>
           </div>
           <div class="d-flex flex-row-reverse mb-2">
-              <button class="delete-btn btn btn-outline-danger btn-sm" onClick="deleteComment(this)"><i class="fas fa-trash-alt mr-1"></i>Delete</button>
-              <button class="reply-btn btn btn-outline-primary btn-sm mr-1" onClick="setFormReply(this)"><i class="fas fa-reply mr-1"></i>Reply</button>
+              <button class="delete-btn btn btn-outline-danger btn-sm" onClick="deleteComment(this)"><i class="fas fa-trash-alt mr-1"></i><span  data-translate>Delete</span></button>
+              <button class="reply-btn btn btn-outline-primary btn-sm mr-1" onClick="setFormReply(this)"><i class="fas fa-reply mr-1"></i><span  data-translate>Reply</span></button>
               <input type="hidden" name="key" class="comment-key" />
           </div>
         </div>
@@ -117,7 +118,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="backgroundModalLabel">Background</h5>
+            <h5 class="modal-title" id="backgroundModalLabel" data-translate>Select background</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -125,53 +126,61 @@
           <div class="modal-body">
             <div class="list-group" role="tablist">
               <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab">
-              Y-so-serious
+                <span data-translate>Y-so-serious</span>
               </button>
               <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
-              Triangular Maze
+              <span data-translate>Triangular Maze</span>
               </button>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onClick="setBackground()">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              <span data-translate>Close</span>
+            </button>
+            <button type="button" class="btn btn-primary" onClick="setBackground()">
+              <span data-translate>Save changes</span>
+            </button>
           </div>
         </div>
       </div>
     </div>
 
-       <!-- Language Selection Modal -->
+    <!-- Language Selection Modal -->
     <div class="modal fade" id="languageModal" tabindex="-1" role="dialog" aria-labelledby="languageModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="languageModalLabel">Select Language</h5>
+            <h5 class="modal-title" id="languageModalLabel" data-translate>Select Language</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="list-group" role="tablist">
-              <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab" >
-                English
+              <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab" value="en">
+                <span data-translate>English</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
-                Spanish
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" value="es">
+                <span data-translate>Spanish</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
-                French
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" value="fr">
+                <span data-translate>French</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
-                Portuguese
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" value="pt">
+                <span data-translate>Portuguese</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
-                German
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" value="de">
+                <span data-translate>German</span>
               </button>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onClick="setLanguage()">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              <span data-translate>Close</span>
+            </button>
+            <button type="button" class="btn btn-primary" onClick="setLanguage(this)">
+              <span data-translate>Save changes</span>
+            </button>
           </div>
         </div>
       </div>
