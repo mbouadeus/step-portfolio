@@ -34,6 +34,11 @@
       <version>1.9.59</version>
     </dependency>
     <dependency>
+      <groupId>com.google.auth</groupId>
+      <artifactId>google-auth-library-oauth2-http</artifactId>
+      <version>0.21.1</version>
+    </dependency>
+    <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-translate</artifactId>
       <version>1.70.0</version>

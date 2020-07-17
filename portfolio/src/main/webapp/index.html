@@ -28,7 +28,7 @@
             <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#backgroundModal" data-translate>Background</a>
             <a role="button" class="dropdown-item" href="#" data-toggle="modal" data-target="#languageModal" data-translate>Language</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
+            <a class="dropdown-item" href="#" data-translate>Separated link</a>
           </div>
         </div>
 
@@ -49,13 +49,16 @@
       <div class="row">
         <div class="col-6 px-1 text-right">
           <!-- button to portfolio page -->
-          <a href="portfolio.html" role="button" class="btn btn-primary btn-lg ml-2" data-translate>
-          <i class="fas fa-th-large pr-1"></i>
-          Browse Projects</a>
+          <a href="portfolio.html" role="button" class="btn btn-primary btn-lg ml-2">
+            <i class="fas fa-th-large pr-1"></i>
+            <span data-translate>Browse Projects</span>
+          </a>
         </div>
         <div class="col-6 px-1">
           <!-- button to resume -->
-          <a href="https://smbouadeu-projects.s3.us-east-2.amazonaws.com/My+Website/content/Resume.pdf" target="_blank" role="button" class="btn btn-secondary btn-lg" data-translate>Resume</a>
+          <a href="https://smbouadeu-projects.s3.us-east-2.amazonaws.com/My+Website/content/Resume.pdf" target="_blank" role="button" class="btn btn-secondary btn-lg">
+            <span data-translate>Resume</span>
+          </a>
         </div>
       </div>
     </main>
@@ -65,24 +68,28 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="backgroundModalLabel" data-translate>Background</h5>
+            <h5 class="modal-title" id="backgroundModalLabel" data-translate>Select background</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="list-group" role="tablist">
-              <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab" data-translate>
-              Y-so-serious
+              <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab">
+                <span data-translate>Y-so-serious</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" data-translate>
-              Triangular Maze
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab">
+              <span data-translate>Triangular Maze</span>
               </button>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" data-translate>Close</button>
-            <button type="button" class="btn btn-primary" onClick="setBackground()" data-translate>Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              <span data-translate>Close</span>
+            </button>
+            <button type="button" class="btn btn-primary" onClick="setBackground()">
+              <span data-translate>Save changes</span>
+            </button>
           </div>
         </div>
       </div>
@@ -100,26 +107,30 @@
           </div>
           <div class="modal-body">
             <div class="list-group" role="tablist">
-              <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab" data-translate>
-                English
+              <button class="list-group-item list-group-item-action active" data-toggle="list" role="tab" value="en">
+                <span data-translate>English</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" data-translate>
-                Spanish
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" value="es">
+                <span data-translate>Spanish</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" data-translate>
-                French
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" value="fr">
+                <span data-translate>French</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" data-translate>
-                Portuguese
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" value="pt">
+                <span data-translate>Portuguese</span>
               </button>
-              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" data-translate>
-                German
+              <button class="list-group-item list-group-item-action" data-toggle="list" role="tab" value="de">
+                <span data-translate>German</span>
               </button>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" data-translate>Close</button>
-            <button type="button" class="btn btn-primary" onClick="setLanguage()" data-translate>Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              <span data-translate>Close</span>
+            </button>
+            <button type="button" class="btn btn-primary" onClick="setLanguage(this)">
+              <span data-translate>Save changes</span>
+            </button>
           </div>
         </div>
       </div>

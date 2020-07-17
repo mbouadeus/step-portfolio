@@ -1,36 +1,21 @@
-const divider = "^~¬";
-
-function getAllText() {
-
-  // Get all elements with text to translate
-  const elements = document.querySelectorAll("[data-translate]");
-
-  // Concatenate all text to one string separated by divider
-  let text = "";
-  elements.forEach(elem => {text += divider + elem.innerText;});
-
-  return text.substring(3);
+/**
+ * Get all elements with text to translate
+*/
+function getElements() {
+  return document.querySelectorAll("[data-translate]");
 }
 
-function setAllText(translatedText) {
-  
-  // Split translated text into array
-  const textList = translatedText.split(divider);
-
-  // Get all elements
-  const elements = document.querySelectorAll("[data-translate]");
-
-  elements.forEach((elem, index) => {
-    elem.innerText = textList[index+1];
-  });
+/**
+ * Get language code of selected language
+*/
+function getLanguageCode() {
+  return document.querySelector('#languageModal .list-group-item.active').value;
 }
 
-async function translate() {
-  // Get all the text on the page
-  const text = getAllText();
-
-  // Temporarily set translate language to spanish
-  const languageCode = "es";
+/**
+ * Translate text to specified language
+*/
+async function translate(text, languageCode) {
 
   const body = {text: text, languageCode: languageCode};
 
@@ -38,6 +23,31 @@ async function translate() {
   const translatedText = await postRequest('/translate', body)
   .then(res => res.text());
 
-  // Change all the text on the page.
-  setAllText(translatedaText);
+  return translatedText;
+}
+
+/**
+ * Change the language of webpage.
+*/
+async function setLanguage(button) {
+  // Disable change language button
+  button.disabled = true;
+
+  // Hide language selection model
+  $('#languageModal').modal('hide');
+
+  // Get language code to translate to
+  const languageCode = getLanguageCode();
+
+  // Get all elements with translatable text
+  const elements = getElements();
+
+  // Translate each of the element's text
+  for (const element of elements) {
+    const translatedText = await translate(element.innerText, languageCode);
+    element.innerText = translatedText;
+  }
+
+  // Re-enable change language button
+  button.disabled = false;
 }

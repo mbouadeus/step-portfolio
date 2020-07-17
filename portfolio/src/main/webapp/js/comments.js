@@ -26,19 +26,14 @@ function getServletUrl() {
 * Dynamically appends comments from server to DOM.
 */
 async function printComments() {
-
   const url = getServletUrl();
-
   const commentsJson = await getCommentFromServer(url);
 
   if (commentsJson.length === 0) {
-
     // If there are no comments.
     printEmpty();
   } else {
-    
     // If comments have been posted, print it.
-
     const commentContainer = document.getElementById('comment-container');
     const mediaElem = document.querySelector('.media-template');
 
@@ -47,7 +42,6 @@ async function printComments() {
 
       // Print each individual comment
       for (let index = commentGroup.length-1; index >= 0; index--) {
-
         if (index == commentGroup.length-1) {
           // Original comment
           printComment(commentGroup[index], false, mediaElem, commentContainer);
@@ -56,7 +50,6 @@ async function printComments() {
           printComment(commentGroup[index], true, mediaElem, commentContainer);
         }
       }
-
     });
   }
 }
@@ -92,8 +85,8 @@ function printComment(commentObj, reply, mediaElem, commentContainer) {
   keyElem.value = commentObj.key;
 
   // Add comment text
-  const commentElem = mediaClone.querySelector('.media-body');
-  commentElem.append(comment);
+  const commentElem = mediaClone.querySelector('.media-body p');
+  commentElem.innerText = comment;
 
   // Add comment image if exists
   const imageUrl = commentObj.imageUrl;

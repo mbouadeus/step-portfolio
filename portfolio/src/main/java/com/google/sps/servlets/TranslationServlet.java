@@ -23,6 +23,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.auth.oauth2.ServiceAccountCredentials;
+import java.io.FileInputStream;
+
 /** 
 * Servlet that translates text to another language and returns it. 
 */
@@ -36,8 +39,14 @@ public class TranslationServlet extends HttpServlet {
     String originalText = request.getParameter("text");
     String languageCode = request.getParameter("languageCode");
     
+    // Set service account key.
+    Translate translate = TranslateOptions.newBuilder()
+      .setCredentials(
+        ServiceAccountCredentials.fromStream(
+          new FileInputStream("/home/mbouadeus/mbouadeus-step-2020-7ddd9d684f4c.json")))
+            .build().getService();
+
     // Do the translation.
-    Translate translate = TranslateOptions.getDefaultInstance().getService();
     Translation translation =
         translate.translate(originalText, Translate.TranslateOption.targetLanguage(languageCode));
     String translatedText = translation.getTranslatedText();
