@@ -31,13 +31,26 @@ public final class FindMeetingQuery {
   * @return a list of time ranges where the requested meeting could take place.
   */
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    List<TimeRange> possibleTimes = new ArrayList<>();
     List<Event> eventList = new ArrayList<>(events);
     sortEventsByStart(eventList);
     long duration = request.getDuration();
+    Collection<String> attendees = new ArrayList<>();
+
+    // Try with all meeting attendees.
+    attendees.addAll(request.getAttendees());
+    attendees.addAll(request.getOptionalAttendees());
 
     // Begins with the assumption that the entire day is available.
-    return findOpennings(possibleTimes, eventList, 0, TimeRange.START_OF_DAY, duration, request.getAttendees());
+    Collection<TimeRange> opennings = findOpennings(eventList, duration, attendees);
+
+    // Stop if found meeting slots or there are no required attendees.
+    if (opennings.size() > 0 || request.getAttendees().size() == 0)
+      return opennings;
+
+    // Look for only required attendees.
+    attendees.clear();
+    attendees.addAll(request.getAttendees());
+    return findOpennings(eventList, duration, attendees);
   }
 
   /**
