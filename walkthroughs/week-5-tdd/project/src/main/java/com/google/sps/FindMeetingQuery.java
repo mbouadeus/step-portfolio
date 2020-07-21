@@ -34,23 +34,24 @@ public final class FindMeetingQuery {
     List<Event> eventList = new ArrayList<>(events);
     sortEventsByStart(eventList);
     long duration = request.getDuration();
-    Collection<String> attendees = new ArrayList<>();
+
+    Collection<String> requiredAttendees = new ArrayList<>();
+    Collection<String> allAttendees = new ArrayList<>();
 
     // Try with all meeting attendees.
-    attendees.addAll(request.getAttendees());
-    attendees.addAll(request.getOptionalAttendees());
+    allAttendees.addAll(request.getAttendees());
+    allAttendees.addAll(request.getOptionalAttendees());
 
     // Begins with the assumption that the entire day is available.
-    Collection<TimeRange> opennings = findOpennings(eventList, duration, attendees);
+    Collection<TimeRange> opennings = findOpennings(eventList, duration, allAttendees);
 
     // Stop if found meeting slots or there are no required attendees.
     if (opennings.size() > 0 || request.getAttendees().size() == 0)
       return opennings;
 
     // Look for only required attendees.
-    attendees.clear();
-    attendees.addAll(request.getAttendees());
-    return findOpennings(eventList, duration, attendees);
+    requiredAttendees.addAll(request.getAttendees());
+    return findOpennings(eventList, duration, requiredAttendees);
   }
 
   /**
